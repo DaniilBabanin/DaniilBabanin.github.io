@@ -1,0 +1,13 @@
+html,body{ 
+  margin:0;
+}
+
+canvas{
+	display:block;
+	vertical-align:bottom;
+}
+
+#particles-js{
+  height:100%;
+  background:#000000
+}
