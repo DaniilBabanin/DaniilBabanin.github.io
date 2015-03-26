@@ -1,13 +1,34 @@
 html,body{ 
   margin:0;
+  background-color:#000000;
 }
+
+h1{
+	font-family: "Lucida Console", Lucida;
+	font-size: 20px;
+}
+
+div{
+	color:#ffffff;
+}
+
+p{
+	font-family: "Sans-serif", Sans-serif;
+	font-size: 10px;
+}
+
 
 canvas{
 	display:block;
 	vertical-align:bottom;
+	width: 100%;
+    height: 100%;
 }
 
 #particles-js{
+  position: absolute; z-index: 0;
+  vertical-align:bottom;
   height:100%;
-  background:#000000
+  width: 100%;
+  background:#000000;
 }
