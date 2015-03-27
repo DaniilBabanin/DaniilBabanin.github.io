@@ -4,8 +4,9 @@ html,body{
 }
 
 h1{
-	font-family: "Lucida Console", Lucida;
-	font-size: 20px;
+	font-family: 'Great Vibes', cursive;
+	font-size: 48px;
+	text-shadow: 1px 1px 2px #000, 0 0 20px #000, 0 0 3px #000, 0 0 2px #000, 0 0 15px #000;
 }
 
 div{
@@ -13,18 +14,20 @@ div{
 }
 
 p{
-	font-family: "Sans-serif", Sans-serif;
-	font-size: 10px;
+	font-size: 14px;
+	font-family: 'VT323', serif;
+	text-shadow: 1px 1px 2px #000, 0 0 10px #000, 0 0 5px #000, 0 0 2px #000, 0 0 15px #000;
 }
 
 .frame{
-	position: absolute; z-index: 1;
+	position: absolute;
+	z-index: 1;
     top: 50%;
-    left: 50%;
-    margin-top: 0px;
-    margin-left: -150px;
-    width: 300px;
-    height: 200px;
+    left: 31%;
+    width: 38%;
+    height: auto;
+    text-align:center;
+    box-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000, 0 0 2px #000, 0 0 50px #000;
 }
 
 
@@ -40,5 +43,5 @@ canvas{
   vertical-align:bottom;
   height:100%;
   width: 100%;
-  background:#000000;
+  background:#000;
 }
