@@ -3,8 +3,13 @@ html,body{
   background-color:#000000;
 }
 
+@font-face {
+	font-family: "SourceCodePro-Light";	
+	src: url("font/SourceCodePro-Light.otf") format("opentype");
+}
+
 h1{
-	font-family: 'Great Vibes', cursive;
+	font-family: "SourceCodePro-Light";
 	font-size: 48px;
 	text-shadow: 1px 1px 2px #000, 0 0 20px #000, 0 0 3px #000, 0 0 2px #000, 0 0 15px #000;
 }
@@ -14,8 +19,8 @@ div{
 }
 
 p{
-	font-size: 14px;
-	font-family: 'VT323', serif;
+	font-size: 10px;
+	font-family: 'SourceCodePro-Light', serif;
 	text-shadow: 1px 1px 2px #000, 0 0 10px #000, 0 0 5px #000, 0 0 2px #000, 0 0 15px #000;
 }
 
@@ -27,7 +32,12 @@ p{
     width: 38%;
     height: auto;
     text-align:center;
+    background-color: rgba(0, 0, 0, 0.6);
     box-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000, 0 0 2px #000, 0 0 50px #000;
+}
+.bottom{
+	margin-bottom: 25px;
+	margin-top: 70px;
 }
 
 
