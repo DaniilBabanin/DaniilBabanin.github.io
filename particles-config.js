@@ -51,7 +51,7 @@ particlesJS('particles-js', {
       },
       onresize: {
         enable: true,
-        mode: 'out', // "out" or "bounce"
+        mode: 'bounce', // "out" or "bounce"
         density_auto: true,
         density_area: 1000 // nb_particles = particles.nb * (canvas width *  canvas height / 1000) / density_area
       }
