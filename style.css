@@ -1,17 +1,16 @@
-html,body{ 
+html,body{
   margin:0;
-  background-color:#000000;
+  background-color:#1F1F1F;
 }
 
 @font-face {
-	font-family: "SourceCodePro-Light";	
+	font-family: "SourceCodePro-Light";
 	src: url("font/SourceCodePro-Light.otf") format("opentype");
 }
 
 h1{
 	font-family: "SourceCodePro-Light";
-	font-size: 48px;
-	text-shadow: 1px 1px 2px #000, 0 0 20px #000, 0 0 3px #000, 0 0 2px #000, 0 0 15px #000;
+	font-size: 47px;
 }
 
 div{
@@ -19,9 +18,9 @@ div{
 }
 
 p{
-	font-size: 10px;
+	font-size: 11px;
 	font-family: 'SourceCodePro-Light', serif;
-	text-shadow: 1px 1px 2px #000, 0 0 10px #000, 0 0 5px #000, 0 0 2px #000, 0 0 15px #000;
+	color:#595959;
 }
 
 .frame{
@@ -32,8 +31,8 @@ p{
     width: 38%;
     height: auto;
     text-align:center;
-    background-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 1px 1px 2px #000, 0 0 25px #000, 0 0 5px #000, 0 0 2px #000, 0 0 50px #000;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 5px 21px #000;
 }
 .bottom{
 	margin-bottom: 25px;
@@ -53,5 +52,5 @@ canvas{
   vertical-align:bottom;
   height:100%;
   width: 100%;
-  background:#000;
+  background:#1F1F1F;
 }
