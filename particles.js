@@ -20,7 +20,7 @@ var pJS = function(tag_id, params){
     },
     particles: {
       number: {
-        value: 400,
+        value: 380,
         density: {
           enable: true,
           value_area: 800
@@ -102,7 +102,7 @@ var pJS = function(tag_id, params){
       },
       modes: {
         grab:{
-          distance: 100,
+          distance: 140,
           line_linked:{
             opacity: 1
           }

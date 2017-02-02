@@ -11,6 +11,7 @@ html,body{
 h1{
 	font-family: "SourceCodePro-Light";
 	font-size: 47px;
+  text-shadow: 2px 2px 3px #000;
 }
 
 div{
@@ -20,7 +21,7 @@ div{
 p{
 	font-size: 11px;
 	font-family: 'SourceCodePro-Light', serif;
-	color:#595959;
+	color:#a5a5a5;
 }
 
 .frame{
@@ -61,9 +62,7 @@ canvas{
 #particles-js{
   position: absolute; z-index: 0;
   vertical-align:bottom;
-  height:150%;
-  width: 150%;
-  left: -25%;
-  top: -25%;
+  height:100%;
+  width: 100%;
   background:#1F1F1F;
 }
