@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/daniilbabanin
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://babanin.de
+  * I am daniilbabanin (https://keybase.io/daniilbabanin) on keybase.
+  * I have a public key ASA21E2hF9sdMCQt44IlvLLY4hXplNbnSvFtrBxN-nmTtQo
+
+To do so, I am signing this object:
+
+{
+    &quot;body&quot;: {
+        &quot;key&quot;: {
+            &quot;eldest_kid&quot;: &quot;01201778897245916766241b6ec9fed280b91dbad567461e8d28c3784184ba3027830a&quot;,
+            &quot;host&quot;: &quot;keybase.io&quot;,
+            &quot;kid&quot;: &quot;012036d44da117db1d30242de38225bcb2d8e215e994d6e74af16dac1c4dfa7993b50a&quot;,
+            &quot;uid&quot;: &quot;39cae4a5279b2f7d6701c811fdde7d19&quot;,
+            &quot;username&quot;: &quot;daniilbabanin&quot;
+        },
+        &quot;merkle_root&quot;: {
+            &quot;ctime&quot;: 1500061028,
+            &quot;hash&quot;: &quot;7a1a95b5b06bd6e4068919aa56338fe221b2d4de3775281e59d5b92b7b0266cf7b55f328215a24973fe0bf8feed73a27869faeec649e5596fb50d5d62f452659&quot;,
+            &quot;hash_meta&quot;: &quot;e679a8dcacabe8a0e6b9b3b7e30a66c76463ba9d535470249dc439e25c3669c7&quot;,
+            &quot;seqno&quot;: 1233289
+        },
+        &quot;service&quot;: {
+            &quot;hostname&quot;: &quot;babanin.de&quot;,
+            &quot;protocol&quot;: &quot;http:&quot;
+        },
+        &quot;type&quot;: &quot;web_service_binding&quot;,
+        &quot;version&quot;: 1
+    },
+    &quot;client&quot;: {
+        &quot;name&quot;: &quot;keybase.io go client&quot;,
+        &quot;version&quot;: &quot;1.0.24&quot;
+    },
+    &quot;ctime&quot;: 1500061082,
+    &quot;expire_in&quot;: 504576000,
+    &quot;prev&quot;: &quot;45c88ca6001412bbecd67a24ffd998da6a583b6f3378b732931b07f59113517e&quot;,
+    &quot;seqno&quot;: 11,
+    &quot;tag&quot;: &quot;signature&quot;
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgNtRNoRfbHTAkLeOCJbyy2OIV6ZTW50rxbawcTfp5k7UKp3BheWxvYWTFA0d7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwMTc3ODg5NzI0NTkxNjc2NjI0MWI2ZWM5ZmVkMjgwYjkxZGJhZDU2NzQ2MWU4ZDI4YzM3ODQxODRiYTMwMjc4MzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwMzZkNDRkYTExN2RiMWQzMDI0MmRlMzgyMjViY2IyZDhlMjE1ZTk5NGQ2ZTc0YWYxNmRhYzFjNGRmYTc5OTNiNTBhIiwidWlkIjoiMzljYWU0YTUyNzliMmY3ZDY3MDFjODExZmRkZTdkMTkiLCJ1c2VybmFtZSI6ImRhbmlpbGJhYmFuaW4ifSwibWVya2xlX3Jvb3QiOnsiY3RpbWUiOjE1MDAwNjEwMjgsImhhc2giOiI3YTFhOTViNWIwNmJkNmU0MDY4OTE5YWE1NjMzOGZlMjIxYjJkNGRlMzc3NTI4MWU1OWQ1YjkyYjdiMDI2NmNmN2I1NWYzMjgyMTVhMjQ5NzNmZTBiZjhmZWVkNzNhMjc4NjlmYWVlYzY0OWU1NTk2ZmI1MGQ1ZDYyZjQ1MjY1OSIsImhhc2hfbWV0YSI6ImU2NzlhOGRjYWNhYmU4YTBlNmI5YjNiN2UzMGE2NmM3NjQ2M2JhOWQ1MzU0NzAyNDlkYzQzOWUyNWMzNjY5YzciLCJzZXFubyI6MTIzMzI4OX0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJiYWJhbmluLmRlIiwicHJvdG9jb2wiOiJodHRwOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4yNCJ9LCJjdGltZSI6MTUwMDA2MTA4MiwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiI0NWM4OGNhNjAwMTQxMmJiZWNkNjdhMjRmZmQ5OThkYTZhNTgzYjZmMzM3OGI3MzI5MzFiMDdmNTkxMTM1MTdlIiwic2Vxbm8iOjExLCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQE99yD9xpeDhN0TLaiVhIK6mkB5gzN/YxuAiphPS6x6o7ZCaOUOcKbbVKOkdxnpUmJexdqfIYWJQ7Jf5lZ8uRQKoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCChZbpo5ebQuODqRwcEiWYNlIUzJoiiyqd8N8hVB6d5yqN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/daniilbabanin
+
+==================================================================
