@@ -1,84 +1,193 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<title>Babanin</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Daniil Babanin - Software Developer">
+		<meta name="keywords" content="Daniil Babanin, Director Operations, System Architekt, Software Developer, Programmer">
+		<meta name="author" content="Daniil Babanin">
+		<title>Daniil Babanin</title>
+		<link rel="preload" as="font" href="/font/SourceCodePro-Light.otf" type="font" crossorigin="anonymous">
+		<link rel="preload" as="font" href="/font/Lato-Regular.ttf" type="font" crossorigin="anonymous">
+		<link rel="preload" as="font" href="/font/EBGaramond-SemiBold.ttf" type="font" crossorigin="anonymous">
+		<link rel="preload" as="font" href="/font/EBGaramond-Regular.ttf" type="font" crossorigin="anonymous">
 		<link rel="stylesheet" href="style.css">
-		<div class="particles" id="particles-js"></div>
-		<script src="particles.js"></script>
-		<script src="app.js"></script>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>DB</text></svg>">
 	</head>
 	<body>
-		<div class="frame">
+		<div class="particles" id="particles-js"></div>
+		<button id="toggle-particles" aria-label="Toggle particle animation">Disable Particles</button>
+		<script src="particles-webgl.js"></script>
+		<script src="app.js"></script>
+		
+		<div class="frame" role="main" aria-label="Personal Information">
 			<div class="inner">
-				<h1>Daniil Babanin</h1>
-				<div class="bottom">
-					<p>
-						eMail: daniil@babanin.de
+				<div class="content-container">
+					<div id="initial-content">
+						<h1>Daniil Babanin</h1>
+						<div class="bottom">
+							<p>View a summary of my skills <a href="#" id="skills-link">here</a>.</p>
+							<p>For my full CV, click <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs">here</a> and email <a href="mailto:contact@babanin.de">contact@babanin.de</a> for the password.</p>
+						</div>
+					</div>
+					<div id="skills-content" class="skills-content">
+						<h1>Professional Skills</h1>
+						<h3>CV Summary</h3>
+						<h5>As a seasoned software developer and leader with over 10 years in IT, I specialize in full-stack development, system architecture, and operational management. Below is an overview of my key skills and expertise, honed through diverse projects in dynamic environments.</h5>
+						
+						<h4>Technical Expertise</h4>
+						
+						<h5><strong>Full-Stack Development & Architecture:</strong></h5>
+						<ul>
+							<li>Proficient in languages: JavaScript, TypeScript, Solidity, HTML/CSS, SQL (MySQL).</li>
+							<li>Frameworks: Node.js, React, Svelte for building scalable frontend and backend systems.</li>
+							<li>App Development: Cross-platform apps (Android/iOS), Progressive Web Apps (PWAs).</li>
+							<li>Software Architecture: End-to-end design of high-performance, secure systems.</li>
+							<li>Testing: Unit and integration tests, Test-Driven Development (TDD).</li>
+						</ul>
+						
+						<h5><strong>Cloud & DevOps:</strong></h5>
+						<ul>
+							<li>Infrastructure: AWS (EC2, S3, Lambda), Kubernetes cluster management.</li>
+							<li>CI/CD Pipelines: Automated build and deployment processes (e.g., Jenkins, GitLab CI).</li>
+							<li>Containerization: Docker, microservices architectures.</li>
+						</ul>
+						
+						<h5><strong>Web3 & Innovation:</strong></h5>
+						<ul>
+							<li>Smart contract development with Solidity.</li>
+							<li>Decentralized systems, tokenomics, cryptography (including Zero-Knowledge Proofs).</li>
+							<li>Blockchain integration into enterprise applications.</li>
+						</ul>
+						
+						<h4>Strategic Leadership & Management</h4>
+						
+						<h5><strong>Team Leadership & Scaling:</strong></h5>
+						<ul>
+							<li>Leading teams of 15+ members in remote/hybrid settings.</li>
+							<li>Building development processes from scratch (Agile transformation, sprint planning).</li>
+							<li>Budget management, resource allocation, and project prioritization.</li>
+						</ul>
+						
+						<h5><strong>Operational Excellence:</strong></h5>
+						<ul>
+							<li>Reducing time-to-market through process optimization (Kanban/Scrum).</li>
+							<li>Implementing monitoring tools (e.g., Prometheus/Grafana) for error prevention.</li>
+							<li>Scaling IT infrastructures for business growth (from startup to scale-up).</li>
+						</ul>
+						
+						<h5><strong>Business Impact:</strong></h5>
+						<ul>
+							<li>Delivered 20+ projects focused on ROI, including automation solutions.</li>
+							<li>Client acquisition via technical proof-of-concepts.</li>
+							<li>Ensuring compliance (e.g., GDPR, ISO) in critical systems.</li>
+						</ul>
+						
+						<h4>Leadership & Soft Skills</h4>
+						
+						<h5><strong>Mentoring & Development:</strong></h5>
+						<ul>
+							<li>Trained 5+ apprentices and junior developers.</li>
+							<li>Created internal training programs (e.g., Web3 workshops, code reviews).</li>
+						</ul>
+						
+						<h5><strong>Conflict Management & Communication:</strong></h5>
+						<ul>
+							<li>Mediating technical conflicts (e.g., time vs. quality trade-offs).</li>
+							<li>Stakeholder reporting at executive levels.</li>
+						</ul>
+						
+						<h5><strong>Change Management:</strong></h5>
+						<ul>
+							<li>Team restructuring post-challenges, including staff reductions.</li>
+							<li>Introducing remote work cultures with tools like GitLab, Mattermost, Jitsi.</li>
+						</ul>
+						
+						<p>This summary highlights my core competencies while keeping details general for public viewing. </p>
+						<p>For a full CV with specific experiences, please contact me at <a href="mailto:contact@babanin.de">contact@babanin.de</a>.</p>
 						<br>
-						github.com/DaniilBabanin
-					</p>
+						<br>
+					</div>
 				</div>
 			</div>
 		</div>
-		<script>
-		  console.log("		      -hmmdhs+:`                              `-/oyhdd/              ");
-	      console.log("		      hmmmmmmmmmho:`       ``......`    `-/oydmmmmmmmmm-             ");
-	      console.log("		      hmmmmmmmmmmmmmhyhhddmmmmmmmmmmmmdmmmmmmmmmmmmmmmmy             ");
-	      console.log("		      ymmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm             ");
-	      console.log("		      smmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.            ");
-	      console.log("		      smmmmmmmmmmmmmmmmmmmmmNNNNNNNNmmmmmmmmmmmmmmmmmmmm:            ");
-	      console.log("		     -mmmmmmmmmmmmmmmmmmmNNMMMMMMMMMMMMNNmmmmmmmmmmmmmmm+            ");
-	      console.log("		    :dmmmmmmmmmmmmmmmmmNMMMMMMMMMMMMMMMMMNmmmmmmmmmmmmmmmo           ");
-	      console.log("		   -mmmmmmmmmmmmmmmmmmNMMMMMMMMMMMMMMMMMMMMNmmmmmmmmmmmmmmo          ");
-	      console.log("		   hmmmmmmmmmmmmmmmmmNMMMMMMMMMMMMMMMMMMMMMMMmmmmmmmmmmmmmm/         ");
-	      console.log("		  /mmmmmmmmmmmmmmmmmNMMMMMMMMMMMMMMMMMMMMMMMMMNmmmmmmmmmmmmh         ");
-	      console.log("		  ymmmmmmmmmmmmmmmmdyo///++ossyyysso++//////+ydmmmmmmmmmmmmm.        ");
-	      console.log("		 `mmmmmmmmmmmmmmmmmso-.......................:odmmmmmmmmmmmm-        ");
-	      console.log("		 .mmmmmmmmmmmmmmmms/: `..................`   .ommmmmmmmmmmmm-        ");
-	      console.log("		 .mmmmmmmmmmmmmmmhsho/``................ ./o+/ommmmmmmmmmmmm`        ");
-	      console.log("		  dmmmmmmmmmmmmmdydhss+ `..............` ossshdmmmmmmmmmmmmh         ");
-	      console.log("		  dmmmmmmmmmmmmmohdssso `..............``sssshmmmmmmmmmmmmmy         ");
-	      console.log("		 :mmmmmmmmmmmmmd/ossso: `..............` /sssyymmmmmmmmmmmms         ");
-	      console.log("		`dmmmmmmmmmmmmmho-`--. `......-:-.......` .--.+dmmmmmmmmmmm+         ");
-	      console.log("		.mmmmmmmmmmmmmmdo-````........-+:........````-shmmmmmmmmmmm-         ");
-	      console.log("		 -ydmmmmmmmmmmmmh/...........-----........-/ohdmmmmmmmmmmmy          ");
-	      console.log("		   ./shddmmmmmmmmds:.````....-----...``-/shmmmmmmmmmmmmdy/`          ");
-	      console.log("		 -+:-.`.--/+syhdmmmmhs/-`````./++:``./ydmmmmmmmddhhyo/-.`            ");
-	      console.log("		 :hhmyo/`     `.-:/oshmmhy+-` .//``+dmmmdo++/:--.`     sh/-          ");
-	      console.log("		   .sNmyy-           -mmmmmmy-`   smmmmmd:`            MMhy          ");
-	      console.log("		     :mNmms.        -hmmmmmmm+   -mmmmmmmmy/.`       .sMMhd          ");
-	      console.log("		      -mmmmmyo/::/+sdmmmmmmmmo   +mmmmmmmmmmdyso++ooyNMMmy:          ");
-	      console.log("		       ymmmmmmmmmmmmmmmmmmmmm/   ommmmmmmmmmmmmmmmmmNMhd+-           ");
-	      console.log("		       smmmmmmmmmmmmmmmmmmmmd.   smmmmdddmmmmmmmmmmmhNd/             ");
-	      console.log("		       ommmmmmmmmdddmmmmmmmmd`   smmmm+`.:oyddmmmmmmNNN`             ");
-	      console.log("		       .hdddddho/-`.mmmmmmmmm-   ymmmms     `.:+ydddmmo              ");
-	      console.log("		         `...`     `mmmmmmmmmo   dmmmmh           `..`               ");
-	      console.log("		                   .mmmmmmmmmh   mmmmmm.                             ");
-	      console.log("		                   -mmmmmmmmmmy-/mmmmmmo`                            ");
-	      console.log("		          ``..----:hmmmmmmmmmmM/sNmmmmmm/:::::----..``               ");
-	      console.log("		      `--::::::::sNNmddmmmmmmNs::hmmmmmmy:::::::::::::::-.           ");
-	      console.log("		     `:::::::::::/+//::/yNNdy/::::+ymNNs/:::::::::::::::::.          ");
-	      console.log("		       `.-::::::::::::::/+/:::::::::://:::::::::::::::--.`           ");
-	      console.log("		            ```...----::::::::::::::::::::-----...``                 ");
-		</script>
-		<script type="text/javascript" src="vanilla-tilt.js"></script>
 		<script type="text/javascript">
 
-			VanillaTilt.init(document.querySelector(".frame"), {
-				reverse:        false,
-				max:            60,
-				perspective:    1000,
-				scale:          1.2,
-				speed:          2000,
-				transition:     true,
-				axis:           null,
-				reset:          true,
-			  easing:         "cubic-bezier(.03,.98,.52,.99)"
+			// Handle skills link click and complex animation sequence
+			document.addEventListener('DOMContentLoaded', function() {
+				const skillsLink = document.getElementById('skills-link');
+				const initialContent = document.getElementById('initial-content');
+				const skillsContent = document.getElementById('skills-content');
+				const frame = document.querySelector('.frame');
+				const body = document.querySelector('body');
+				
+				// State variable to track if skills are expanded
+				let skillsExpanded = false;
+				
+				// Function to expand skills
+				function expandSkills() {
+					if (skillsExpanded) return;
+					
+					skillsExpanded = true;
+					
+					// 1. Fade away initial content immediately
+					initialContent.classList.add('hiding');
+					
+					// 2. After a short delay, expand frame
+					setTimeout(() => {
+						// Add expanded class for CSS transitions
+						frame.classList.add('expanded');
+						
+						// Show skills content after frame expands
+						setTimeout(() => {
+							skillsContent.classList.add('showing');
+						}, 300);
+					}, 150); // Short delay for initial content to fade
+				}
+				
+				// Function to collapse skills
+				function collapseSkills() {
+					if (!skillsExpanded) return;
+					
+					skillsExpanded = false;
+					
+					// 1. Fade away skills content
+					skillsContent.classList.remove('showing');
+					
+					// 2. After skills content fades, collapse frame
+					setTimeout(() => {
+						// Remove expanded class for CSS transitions
+						frame.classList.remove('expanded');
+						
+						// 3. After frame collapses, show initial content and re-enable VanillaTilt
+						setTimeout(() => {
+							initialContent.classList.remove('hiding');
+						}, 50); // Wait for frame to collapse
+					}, 300); // Wait for skills content to fade
+				}
+				
+				// Handle skills link click
+				skillsLink.addEventListener('click', function(e) {
+					e.preventDefault();
+					expandSkills();
+				});
+				
+				// Handle click outside frame to collapse
+				body.addEventListener('click', function(e) {
+					const toggleButton = document.getElementById('toggle-particles');
+					if (skillsExpanded && !frame.contains(e.target) && e.target !== toggleButton && !toggleButton.contains(e.target)) {
+						collapseSkills();
+					}
+				});
+				
+				// Handle Escape key to collapse
+				document.addEventListener('keydown', function(e) {
+					if (skillsExpanded && e.key === 'Escape') {
+						collapseSkills();
+					}
+				});
 			});
 
-			document.querySelector(".frame").addEventListener("click", function () {
-				window.open("https://github.com/DaniilBabanin/","_self");
-    	});
 		</script>
 	</body>
 </html>

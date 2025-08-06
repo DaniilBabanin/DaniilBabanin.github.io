@@ -1,11 +1,20 @@
-particlesJS('particles-js',
-    {
+// Function to detect mobile devices
+function isMobile() {
+    return window.innerWidth <= 768 || 
+           navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i);
+}
+
+// Function to get particle configuration based on device
+function getParticleConfig() {
+    const isMobileDevice = isMobile();
+    
+    return {
         "particles": {
             "number": {
-                "value": 100,
+                "value": isMobileDevice ? 150 : 300,
                 "density": {
                     "enable": true,
-                    "value_area": 500
+                    "value_area": isMobileDevice ? 300 : 500
                 }
             },
             "color": {
@@ -22,55 +31,28 @@ particlesJS('particles-js',
                     '#DDB700'
                 ]
             },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                },
-                "polygon": {
-                    "nb_sides": 6
-                },
-                "image": {
-                    "src": "img/github.svg",
-                    "width": 100,
-                    "height": 100
-                }
-            },
             "opacity": {
                 "value": 1.0,
-                "random": false,
-                "anim": {
-                    "enable": false,
-                    "speed": 1,
-                    "opacity_min": 0.5,
-                    "sync": false
-                }
+                "random": false
             },
             "size": {
                 "value": 10,
-                "random": true,
-                "anim": {
-                    "enable": false,
-                    "speed": 5,
-                    "size_min": 2,
-                    "sync": false
-                }
+                "random": true
             },
             "line_linked": {
                 "enable": true,
-                "distance": 150,
+                "distance": isMobileDevice ? 100 : 120,
                 "color": "#ffffff",
                 "opacity": 0.75,
                 "width": 0.75
             },
             "move": {
                 "enable": true,
-                "speed": 3,
+                "speed": isMobileDevice ? 1 : 2,
                 "direction": "none",
                 "random": true,
                 "straight": false,
-                "out_mode": "out",
+                "out_mode": "snake",
                 "attract": {
                     "enable": true,
                     "rotateX": 600,
@@ -93,38 +75,88 @@ particlesJS('particles-js',
             },
             "modes": {
                 "grab": {
-                    "distance": 220,
+                    "distance": isMobileDevice ? 150 : 200,
                     "line_linked": {
-                        "opacity": 0.5
+                        "opacity": 0.7
                     }
                 },
-                "bubble": {
-                    "distance": 400,
-                    "size": 40,
-                    "duration": 2,
-                    "opacity": 8,
-                    "speed": 3
+                "push": {
+                    "particles_nb": isMobileDevice ? 2 : 4
                 },
                 "repulse": {
-                    "distance": 200
-                },
-                "push": {
-                    "particles_nb": 3
-                },
-                "remove": {
-                    "particles_nb": 2
+                    "distance": isMobileDevice ? 70 : 100,
+                    "duration": 0.4
                 }
             }
         },
-        "retina_detect": true,
-        "config_demo": {
-            "hide_card": false,
-            "background_color": "#b61924",
-            "background_image": "",
-            "background_position": "50% 50%",
-            "background_repeat": "no-repeat",
-            "background_size": "cover"
+        "retina_detect": true
+    };
+}
+
+// Store the particlesJS instance and animation frame ID
+let particlesInstance = null;
+let animationFrameId = null;
+
+// Function to initialize particles
+function initParticles() {
+    window.particlesJS('particles-js', getParticleConfig());
+}
+
+// Function to destroy particles
+function destroyParticles() {
+    // Use the destroy method of the WebGLParticles instance if available
+    if (window.webglParticles && typeof window.webglParticles.destroy === 'function') {
+        window.webglParticles.destroy();
+    } else {
+        // Fallback to clearing the container
+        const particlesContainer = document.getElementById('particles-js');
+        if (particlesContainer) {
+            particlesContainer.innerHTML = '';
         }
     }
+    
+    // Clear the global reference
+    window.webglParticles = null;
+}
 
-);
+// Initialize particles with responsive configuration
+initParticles();
+
+// Toggle particle animation
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('toggle-particles');
+    
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            const particlesContainer = document.getElementById('particles-js');
+            const canvas = particlesContainer.querySelector('canvas');
+            
+            if (canvas) {
+                if (canvas.style.display === 'none') {
+                    canvas.style.display = 'block';
+                    this.textContent = 'Disable Particles';
+                    // Reinitialize particles
+                    initParticles();
+                } else {
+                    canvas.style.display = 'none';
+                    this.textContent = 'Enable Particles';
+                    // Destroy particles to stop calculations
+                    destroyParticles();
+                }
+            } else {
+                // If no canvas exists, create particles
+                this.textContent = 'Disable Particles';
+                initParticles();
+            }
+        });
+    }
+    
+    // Handle window resize to adjust particles for device changes
+    window.addEventListener('resize', function() {
+        // Destroy existing particles
+        destroyParticles();
+        
+        // Reinitialize with new configuration after a short delay
+        setTimeout(initParticles, 100);
+    });
+});
