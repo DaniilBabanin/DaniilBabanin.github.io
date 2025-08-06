@@ -3,19 +3,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Daniil Babanin - Software Developer">
-		<meta name="keywords" content="Daniil Babanin, Director Operations, System Architekt, Software Developer, Programmer">
-		<meta name="author" content="Daniil Babanin">
-		<title>Daniil Babanin</title>
+		<meta name="description" data-i18n="meta_description" content="Daniil Babanin - Software Developer">
+		<meta name="keywords" data-i18n="meta_keywords" content="Daniil Babanin, Director Operations, System Architect, Software Developer, Programmer">
+		<meta name="author" data-i18n="meta_author" content="Daniil Babanin">
+		<title data-i18n="title">Daniil Babanin</title>
 		<link rel="preload" as="font" href="/font/SourceCodePro-Light.otf" type="font/otf" crossorigin="anonymous">
 		<link rel="preload" as="font" href="/font/Lato-Regular.ttf" type="font/ttf" crossorigin="anonymous">
 		<link rel="preload" as="font" href="/font/EBGaramond-Regular.ttf" type="font/ttf" crossorigin="anonymous">
 		<link rel="stylesheet" href="style.css">
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>DB</text></svg>">
 	</head>
-	<body>
+	<body class="no-js">
 		<div class="particles" id="particles-js"></div>
 		<button id="toggle-particles" aria-label="Toggle particle animation">Disable Particles</button>
+		<script>
+			// Remove no-js class when JavaScript is available
+			document.body.classList.remove('no-js');
+		</script>
 		<script src="particles-webgl.js"></script>
 		<script src="app.js"></script>
 		
@@ -23,98 +27,100 @@
 			<div class="inner">
 				<div class="content-container">
 					<div id="initial-content">
-						<h1>Daniil Babanin</h1>
+						<h1 id="name" data-i18n="name">Daniil Babanin</h1>
 						<div class="bottom">
-							<p>View a summary of my skills <a href="#" id="skills-link">here</a>.</p>
-							<p>For my full CV, click <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs">here</a> and email <a href="mailto:contact@babanin.de">contact@babanin.de</a> for the password.</p>
+							<p id="skills-summary">View a summary of my skills <a href="#" id="skills-link">here</a>.</p>
+							<p id="full-cv">For my full CV, click <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs">here</a> and email <a href="mailto:contact@babanin.de">contact@babanin.de</a> for the password.</p>
 						</div>
 					</div>
 					<div id="skills-content" class="skills-content">
-						<h1>Professional Skills</h1>
-						<h3>CV Summary</h3>
-						<h5>As a seasoned software developer and leader with over 10 years in IT, I specialize in full-stack development, system architecture, and operational management. Below is an overview of my key skills and expertise, honed through diverse projects in dynamic environments.</h5>
+						<h1 id="skills-title" data-i18n="skills_title">Professional Skills</h1>
+						<h3 id="cv-summary" data-i18n="cv_summary">CV Summary</h3>
+						<h5 id="cv-summary-text" data-i18n="cv_summary_text">As a seasoned software developer and leader with over 10 years in IT, I specialize in full-stack development, system architecture, and operational management. Below is an overview of my key skills and expertise, honed through diverse projects in dynamic environments.</h5>
 						
-						<h4>Technical Expertise</h4>
+						<h4 data-i18n="technical_expertise">Technical Expertise</h4>
 						
-						<h5><strong>Full-Stack Development & Architecture:</strong></h5>
+						<h5><strong data-i18n="full_stack_dev">Full-Stack Development & Architecture:</strong></h5>
 						<ul>
-							<li>Proficient in languages: JavaScript, TypeScript, Solidity, HTML/CSS, SQL (MySQL).</li>
-							<li>Frameworks: Node.js, React, Svelte for building scalable frontend and backend systems.</li>
-							<li>App Development: Cross-platform apps (Android/iOS), Progressive Web Apps (PWAs).</li>
-							<li>Software Architecture: End-to-end design of high-performance, secure systems.</li>
-							<li>Testing: Unit and integration tests, Test-Driven Development (TDD).</li>
+							<li data-i18n="full_stack_dev_li1">Proficient in languages: JavaScript, TypeScript, Solidity, HTML/CSS, SQL (MySQL).</li>
+							<li data-i18n="full_stack_dev_li2">Frameworks: Node.js, React, Svelte for building scalable frontend and backend systems.</li>
+							<li data-i18n="full_stack_dev_li3">App Development: Cross-platform apps (Android/iOS), Progressive Web Apps (PWAs).</li>
+							<li data-i18n="full_stack_dev_li4">Software Architecture: End-to-end design of high-performance, secure systems.</li>
+							<li data-i18n="full_stack_dev_li5">Testing: Unit and integration tests, Test-Driven Development (TDD).</li>
 						</ul>
 						
-						<h5><strong>Cloud & DevOps:</strong></h5>
+						<h5><strong data-i18n="cloud_devops_heading">Cloud & DevOps:</strong></h5>
 						<ul>
-							<li>Infrastructure: AWS (EC2, S3, Lambda), Kubernetes cluster management.</li>
-							<li>CI/CD Pipelines: Automated build and deployment processes (e.g., Jenkins, GitLab CI).</li>
-							<li>Containerization: Docker, microservices architectures.</li>
+							<li data-i18n="cloud_devops_li1">Infrastructure: AWS (EC2, S3, Lambda), Kubernetes cluster management.</li>
+							<li data-i18n="cloud_devops_li2">CI/CD Pipelines: Automated build and deployment processes (e.g., Jenkins, GitLab CI).</li>
+							<li data-i18n="cloud_devops_li3">Containerization: Docker, microservices architectures.</li>
 						</ul>
 						
-						<h5><strong>Web3 & Innovation:</strong></h5>
+						<h5><strong data-i18n="web3_innovation_heading">Web3 & Innovation:</strong></h5>
 						<ul>
-							<li>Smart contract development with Solidity.</li>
-							<li>Decentralized systems, tokenomics, cryptography (including Zero-Knowledge Proofs).</li>
-							<li>Blockchain integration into enterprise applications.</li>
+							<li data-i18n="web3_innovation_li1">Smart contract development with Solidity.</li>
+							<li data-i18n="web3_innovation_li2">Decentralized systems, tokenomics, cryptography (including Zero-Knowledge Proofs).</li>
+							<li data-i18n="web3_innovation_li3">Blockchain integration into enterprise applications.</li>
 						</ul>
 						
-						<h4>Strategic Leadership & Management</h4>
+						<h4 data-i18n="strategic_leadership">Strategic Leadership & Management</h4>
 						
-						<h5><strong>Team Leadership & Scaling:</strong></h5>
+						<h5><strong data-i18n="team_leadership">Team Leadership & Scaling:</strong></h5>
 						<ul>
-							<li>Leading teams of 15+ members in remote/hybrid settings.</li>
-							<li>Building development processes from scratch (Agile transformation, sprint planning).</li>
-							<li>Budget management, resource allocation, and project prioritization.</li>
+							<li data-i18n="team_leadership_li1">Leading teams of 15+ members in remote/hybrid settings.</li>
+							<li data-i18n="team_leadership_li2">Building development processes from scratch (Agile transformation, sprint planning).</li>
+							<li data-i18n="team_leadership_li3">Budget management, resource allocation, and project prioritization.</li>
 						</ul>
 						
-						<h5><strong>Operational Excellence:</strong></h5>
+						<h5><strong data-i18n="operational_excellence_heading">Operational Excellence:</strong></h5>
 						<ul>
-							<li>Reducing time-to-market through process optimization (Kanban/Scrum).</li>
-							<li>Implementing monitoring tools (e.g., Prometheus/Grafana) for error prevention.</li>
-							<li>Scaling IT infrastructures for business growth (from startup to scale-up).</li>
+							<li data-i18n="operational_excellence_li1">Reducing time-to-market through process optimization (Kanban/Scrum).</li>
+							<li data-i18n="operational_excellence_li2">Implementing monitoring tools (e.g., Prometheus/Grafana) for error prevention.</li>
+							<li data-i18n="operational_excellence_li3">Scaling IT infrastructures for business growth (from startup to scale-up).</li>
 						</ul>
 						
-						<h5><strong>Business Impact:</strong></h5>
+						<h5><strong data-i18n="business_impact_heading">Business Impact:</strong></h5>
 						<ul>
-							<li>Delivered 20+ projects focused on ROI, including automation solutions.</li>
-							<li>Client acquisition via technical proof-of-concepts.</li>
-							<li>Ensuring compliance (e.g., GDPR, ISO) in critical systems.</li>
+							<li data-i18n="business_impact_li1">Delivered 20+ projects focused on ROI, including automation solutions.</li>
+							<li data-i18n="business_impact_li2">Client acquisition via technical proof-of-concepts.</li>
+							<li data-i18n="business_impact_li3">Ensuring compliance (e.g., GDPR, ISO) in critical systems.</li>
 						</ul>
 						
-						<h4>Leadership & Soft Skills</h4>
+						<h4 data-i18n="leadership_soft_skills">Leadership & Soft Skills</h4>
 						
-						<h5><strong>Mentoring & Development:</strong></h5>
+						<h5><strong data-i18n="mentoring_development_heading">Mentoring & Development:</strong></h5>
 						<ul>
-							<li>Trained 5+ apprentices and junior developers.</li>
-							<li>Created internal training programs (e.g., Web3 workshops, code reviews).</li>
+							<li data-i18n="mentoring_development_li1">Trained 5+ apprentices and junior developers.</li>
+							<li data-i18n="mentoring_development_li2">Created internal training programs (e.g., Web3 workshops, code reviews).</li>
 						</ul>
 						
-						<h5><strong>Conflict Management & Communication:</strong></h5>
+						<h5><strong data-i18n="conflict_management_heading">Conflict Management & Communication:</strong></h5>
 						<ul>
-							<li>Mediating technical conflicts (e.g., time vs. quality trade-offs).</li>
-							<li>Stakeholder reporting at executive levels.</li>
+							<li data-i18n="conflict_management_li1">Mediating technical conflicts (e.g., time vs. quality trade-offs).</li>
+							<li data-i18n="conflict_management_li2">Stakeholder reporting at executive levels.</li>
 						</ul>
 						
-						<h5><strong>Change Management:</strong></h5>
+						<h5><strong data-i18n="change_management_heading">Change Management:</strong></h5>
 						<ul>
-							<li>Team restructuring post-challenges, including staff reductions.</li>
-							<li>Introducing remote work cultures with tools like GitLab, Mattermost, Jitsi.</li>
+							<li data-i18n="change_management_li1">Team restructuring post-challenges, including staff reductions.</li>
+							<li data-i18n="change_management_li2">Introducing remote work cultures with tools like GitLab, Mattermost, Jitsi.</li>
 						</ul>
 						
-						<p>This summary highlights my core competencies while keeping details general for public viewing. </p>
-						<p>For a full CV with specific experiences, please contact me at <a href="mailto:contact@babanin.de">contact@babanin.de</a>.</p>
+						<p id="cv-summary-footer" data-i18n="cv_summary_footer">This summary highlights my core competencies while keeping details general for public viewing. </p>
+						<p id="cv-contact" data-i18n="cv_contact">For a full CV with specific experiences, please contact me at <a href="mailto:contact@babanin.de" data-i18n="cv_email_address">contact@babanin.de</a>.</p>
 						<br>
 						<br>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<a href="imprint.html" id="imprint-link" data-i18n="imprint_link">Imprint</a>
+		
 		<script type="text/javascript">
 
 			// Handle skills link click and complex animation sequence
 			document.addEventListener('DOMContentLoaded', function() {
-				const skillsLink = document.getElementById('skills-link');
 				const initialContent = document.getElementById('initial-content');
 				const skillsContent = document.getElementById('skills-content');
 				const frame = document.querySelector('.frame');
@@ -166,8 +172,7 @@
 				}
 				
 				// Handle skills link click
-				skillsLink.addEventListener('click', function(e) {
-					e.preventDefault();
+				document.addEventListener('expandSkillsRequested', function(e) {
 					expandSkills();
 				});
 				

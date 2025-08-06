@@ -1,3 +1,21 @@
+@-moz-document url-prefix() {
+  .frame {
+    display: none;
+  }
+  
+  .frame.loaded {
+    display: block;
+  }
+  
+  .imprint-page .container {
+    display: none;
+  }
+  
+  .imprint-page .container.loaded {
+    display: block;
+  }
+}
+
 html,body{
   margin:0;
   background-color:#1F1F1F;
@@ -14,26 +32,47 @@ body {
 
 @font-face {
 	font-family: "SourceCodePro-Light";
-	src: url("font/SourceCodePro-Light.otf") format("opentype");
+	src: url("/font/SourceCodePro-Light.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Lato-Regular";
-	src: url("font/Lato-Regular.ttf") format("truetype");
+	src: url("/font/Lato-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EBGaramond-SemiBold";
-	src: url("font/EBGaramond-SemiBold.ttf") format("truetype");
+	src: url("/font/EBGaramond-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EBGaramond-Regular";
-	src: url("font/EBGaramond-Regular.ttf") format("truetype");
+	src: url("/font/EBGaramond-Regular.ttf") format("truetype");
 }
 
 div{
 	color:#ffffff;
+}
+
+/* Hide content when JavaScript is not available */
+.no-js .frame {
+  display: none;
+}
+
+/* Hide imprint content when JavaScript is not available */
+.no-js .imprint-page .container {
+  display: none;
+}
+
+.imprint-page .container {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.imprint-page .container.loaded {
+  opacity: 1;
+  visibility: visible;
 }
 
 #initial-content h1{
@@ -46,7 +85,7 @@ div{
 
 #initial-content p{
 	font-family: "SourceCodePro-Light", sans-serif;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 #skills-content h1{
@@ -61,7 +100,7 @@ div{
 
 p{
 	font-size: 30px;
-	font-family: "EBGaramond-Regular", serif;
+	font-family: "EBGaramond-Regular";
   color: #ffffff;
 }
 
@@ -106,6 +145,13 @@ a[href^="mailto"] {
   transition: all 0.5s ease-out;
   transform-origin: center center;
   margin: 0 auto;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.frame.loaded {
+  opacity: 1;
+  visibility: visible;
 }
 
 .frame.expanded {
@@ -181,7 +227,7 @@ a[href^="mailto"] {
 }
 
 .bottom h2 {
-  font-family: "EBGaramond-Regular", serif;
+  font-family: "EBGaramond-Regular";
   font-size: 28px;
   color: #ffffff;
   margin-top: 0;
@@ -189,6 +235,7 @@ a[href^="mailto"] {
 }
 
 .bottom p {
+  font-family: "EBGaramond-Regular";
   font-size: 20px;
   margin: 10px 0;
   color: #d5d5d5;
@@ -202,7 +249,7 @@ a[href^="mailto"] {
 }
 
 .skills-content h3 {
-  font-family: "EBGaramond-Regular", serif;
+  font-family: "EBGaramond-Regular";
   font-size: 28px;
   color: #ffffff;
   margin-top: 0;
@@ -222,7 +269,7 @@ a[href^="mailto"] {
 }
 
 .skills-content h4 {
-  font-family: "EBGaramond-Regular", serif;
+  font-family: "EBGaramond-Regular";
   font-size: 24px;
   color: #66D9EF;
   margin-top: 30px;
@@ -232,12 +279,14 @@ a[href^="mailto"] {
 }
 
 .skills-content h5 {
-  font-size: 20px;
+  font-family: "EBGaramond-Regular";
+  font-size: 24px;
   margin-top: 25px;
   margin-bottom: 12px;
 }
 
 .skills-content p {
+  font-family: "EBGaramond-Regular";
   font-size: 20px;
   margin: 15px 0;
   color: #e0e0e0;
@@ -251,12 +300,14 @@ a[href^="mailto"] {
 }
 
 .skills-content ul {
+  font-family: "EBGaramond-Regular";
   margin: 18px 0 25px 0;
   padding-left: 25px;
 }
 
 .skills-content li {
-  font-size: 16px;
+  font-family: "EBGaramond-Regular";
+  font-size: 22px;
   margin: 12px 0;
   color: #e0e0e0;
   line-height: 1.5;
@@ -270,7 +321,7 @@ a[href^="mailto"] {
   font-size: 25px;
   position: absolute;
   left: -18px;
-  top: -5px;
+  top: 0px;
 }
 
 .skills-content a {
@@ -321,19 +372,22 @@ a[href^="mailto"] {
   }
   
   .skills-content h4 {
+    font-family: "EBGaramond-Regular";
     font-size: 24px;
     margin-top: 25px;
     margin-bottom: 12px;
   }
 
   .skills-content h5 {
-    font-size: 20px;
+    font-family: "EBGaramond-Regular";
+    font-size: 24px;
     margin-top: 25px;
     margin-bottom: 12px;
   }
   
   .skills-content p {
-    font-size: 16px;
+    font-family: "EBGaramond-Regular";
+    font-size: 22px;
     margin: 12px 0;
   }
   
@@ -343,23 +397,26 @@ a[href^="mailto"] {
   }
   
   .skills-content li {
-    font-size: 15px;
+    font-family: "EBGaramond-Regular";
+    font-size: 23px;
     margin: 10px 0;
   }
   
   .skills-content li:before {
     left: -18px;
-    top: -4px;
+    top: 0px;
     list-style-type: none;
   }
   
   .bottom h2 {
+    font-family: "EBGaramond-Regular";
     font-size: 20px;
     margin-bottom: 15px;
   }
   
   .bottom p {
-    font-size: 15px;
+    font-family: "EBGaramond-Regular";
+    font-size: 23px;
     margin: 8px 0;
   }
 }
@@ -391,6 +448,7 @@ a[href^="mailto"] {
   }
   
   .skills-content h3 {
+    font-family: "EBGaramond-Regular";
     font-size: 20px;
     margin-bottom: 15px;
   }
@@ -401,6 +459,7 @@ a[href^="mailto"] {
   }
   
   .skills-content h4 {
+    font-family: "EBGaramond-Regular";
     font-size: 24px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -408,7 +467,8 @@ a[href^="mailto"] {
   }
   
   .skills-content p {
-    font-size: 15px;
+    font-family: "EBGaramond-Regular";
+    font-size: 23px;
     margin: 10px 0;
   }
   
@@ -418,23 +478,25 @@ a[href^="mailto"] {
   }
   
   .skills-content li {
-    font-size: 13px;
+    font-family: "EBGaramond-Regular";
+    font-size: 25px;
     margin: 8px 0;
   }
   
   .skills-content li:before {
     left: -15px;
-    top: -5px;
+    top: 0px;
     list-style-type: none;
   }
   
   .bottom h2 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 12px;
   }
   
   .bottom p {
-    font-size: 15px;
+    font-family: "EBGaramond-Regular";
+    font-size: 23px;
     margin: 6px 0;
   }
 }
@@ -496,4 +558,201 @@ canvas{
 #toggle-particles:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
+}
+
+#imprint-link {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  font-family: 'SourceCodePro-Light', serif;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+#imprint-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Language switcher styles */
+#language-switcher {
+  position: fixed;
+  bottom: 10px;
+  right: 120px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.lang-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  color: white;
+  padding: 5px 10px;
+  font-family: 'SourceCodePro-Light', serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lang-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.lang-button.active {
+  background: rgba(102, 217, 239, 0.3);
+  border-color: rgba(102, 217, 239, 0.5);
+}
+
+/* Imprint Page Styles */
+.imprint-page {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "EBGaramond-Regular";
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #1F1F1F;
+  color: #ffffff;
+}
+
+.imprint-page .container {
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 90vh;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.imprint-page h1 {
+  font-family: "Lato-Regular", sans-serif;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.imprint-page h2 {
+  font-family: "EBGaramond-SemiBold", serif;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #66D9EF;
+}
+
+.imprint-page h3 {
+  font-family: "EBGaramond-SemiBold", serif;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #66D9EF;
+}
+
+.imprint-page p {
+  font-family: "EBGaramond-Regular";
+  font-size: 20px;
+  margin: 10px 0;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.imprint-page a {
+  color: #66D9EF;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.imprint-page a:hover {
+  color: #A6E22E;
+  text-decoration: underline;
+}
+
+.imprint-page .back-link {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  font-family: "SourceCodePro-Light", sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: normal;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.imprint-page .back-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Light mode styles for imprint page */
+@media (prefers-color-scheme: light) {
+  .imprint-page {
+    background-color: #f5f5f5;
+    color: #333333;
+  }
+  
+  .imprint-page .container {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .imprint-page h1 {
+    color: #333333;
+  }
+  
+  .imprint-page h2 {
+    color: #0066cc;
+  }
+  
+  .imprint-page h3 {
+    color: #0066cc;
+  }
+  
+  .imprint-page p {
+    color: #333333;
+  }
+  
+  .imprint-page a {
+    color: #0066cc;
+  }
+  
+  .imprint-page a:hover {
+    color: #004499;
+  }
+  
+  .imprint-page .back-link {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333333;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .imprint-page .back-link:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+  }
 }

@@ -122,8 +122,105 @@ function destroyParticles() {
 // Initialize particles with responsive configuration
 initParticles();
 
-// Toggle particle animation
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize i18n and translate content
+document.addEventListener('DOMContentLoaded', async function() {
+  // Import and initialize i18n
+  try {
+    const i18nModule = await import('./i18n/i18n.js');
+    const i18n = i18nModule.default;
+    
+    // Wait for i18n to be initialized
+    await i18n.initialized;
+    
+    // Function to translate all data-i18n attributes
+    function translatePage() {
+      // Handle elements with only text content
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        // Skip elements with child elements (HTML content)
+        if (element.children.length === 0) {
+          element.textContent = i18n.t(key);
+        }
+      });
+      
+      // Special handling for elements with HTML content
+      // Skills summary
+      const skillsSummary = document.getElementById('skills-summary');
+      if (skillsSummary) {
+        skillsSummary.innerHTML = i18n.t('skills_summary') + ' <a href="#" id="skills-link">' + i18n.t('skills_link') + '</a>.';
+        // Reattach event listener to skills link
+        document.getElementById('skills-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          // Dispatch custom event to trigger expandSkills
+          document.dispatchEvent(new CustomEvent('expandSkillsRequested'));
+        });
+      }
+      
+      // Full CV
+      const fullCV = document.getElementById('full-cv');
+      if (fullCV) {
+        fullCV.innerHTML = i18n.t('full_cv') + ' <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs">' + i18n.t('cv_here') + '</a> ' + 
+          i18n.t('cv_email') + ' <a href="mailto:contact@babanin.de">' + i18n.t('cv_email_address') + '</a> ' + i18n.t('cv_password');
+      }
+      
+      // CV contact
+      const cvContact = document.getElementById('cv-contact');
+      if (cvContact) {
+        cvContact.innerHTML = i18n.t('cv_contact') + ' <a href="mailto:contact@babanin.de">' + i18n.t('cv_email_address') + '</a>.';
+      }
+      
+      // Special handling for attributes
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        element.placeholder = i18n.t(key);
+      });
+      
+      document.querySelectorAll('[data-i18n-title]').forEach(element => {
+        const key = element.getAttribute('data-i18n-title');
+        element.title = i18n.t(key);
+      });
+    }
+    
+    // Initial translation
+    translatePage();
+    
+    // Add loaded class to show content
+    const frame = document.querySelector('.frame');
+    if (frame) {
+      frame.classList.add('loaded');
+    }
+    
+    // Set up language switcher
+    const languageSwitcher = document.getElementById('language-switcher');
+    if (languageSwitcher) {
+      // Populate language options
+      i18n.getSupportedLanguages().forEach(lang => {
+        const option = document.createElement('option');
+        option.value = lang;
+        option.textContent = lang.toUpperCase();
+        if (lang === i18n.getCurrentLanguage()) {
+          option.selected = true;
+        }
+        languageSwitcher.appendChild(option);
+      });
+      
+      // Add event listener for language change
+      languageSwitcher.addEventListener('change', function() {
+        const newLanguage = this.value;
+        if (i18n.setLanguage(newLanguage)) {
+          translatePage();
+        }
+      });
+    }
+  } catch (error) {
+    console.error('Failed to initialize i18n:', error);
+    
+    // Add loaded class even if there's an error
+    const frame = document.querySelector('.frame');
+    if (frame) {
+      frame.classList.add('loaded');
+    }
+  }
     const toggleButton = document.getElementById('toggle-particles');
     
     if (toggleButton) {
