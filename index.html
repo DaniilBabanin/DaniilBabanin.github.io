@@ -24,9 +24,37 @@
 		<link rel="preload" as="font" href="/font/EBGaramond-Regular.ttf" type="font/ttf" crossorigin="anonymous">
 		<link rel="stylesheet" href="style.css">
 		<link rel="icon" href="/favicon.ico">
+		<link rel="manifest" href="/manifest.json">
+		<meta name="theme-color" content="#66D9EF">
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Daniil Babanin",
+			"url": "https://babanin.de",
+			"jobTitle": "Operations Director, System Architect, Software Developer",
+			"description": "Seasoned software developer and leader with over 10 years in IT, specializing in full-stack development, system architecture, and operational management.",
+			"knowsAbout": [
+				"Full-Stack Development",
+				"System Architecture",
+				"Cloud & DevOps",
+				"Web3 & Innovation",
+				"Strategic Leadership",
+				"Operational Management"
+			],
+			"nationality": {
+				"@type": "Country",
+				"name": "Germany"
+			},
+			"sameAs": [
+				"https://www.linkedin.com/in/daniil-babanin",
+				"https://github.com/DaniilBabanin"
+			]
+		}
+		</script>
 	</head>
 	<body class="no-js">
-		<div class="particles" id="particles-js"></div>
+		<div class="particles" id="particles-js" aria-hidden="true"></div>
 		<button id="toggle-particles" aria-label="Toggle particle animation">Disable Particles</button>
 		<script>
 			// Remove no-js class when JavaScript is available
@@ -38,14 +66,14 @@
 		<div class="frame" role="main" aria-label="Personal Information" itemscope itemtype="http://schema.org/Person">
 			<div class="inner">
 				<div class="content-container">
-					<div id="initial-content">
+					<div id="initial-content" role="region" aria-labelledby="name">
 						<h1 id="name" data-i18n="name" itemprop="name">Daniil Babanin</h1>
 						<div class="bottom">
-							<p id="skills-summary">View a summary of my skills <a href="#" id="skills-link">here</a>.</p>
-							<p id="full-cv">For my full CV, click <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs">here</a> and email <a href="mailto:contact@babanin.de">contact@babanin.de</a> for the password.</p>
+							<p id="skills-summary">View a summary of my skills <a href="#" id="skills-link" aria-label="View skills summary">here</a>.</p>
+							<p id="full-cv">For my full CV, click <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs" aria-label="Download full CV">here</a> and email <a href="mailto:contact@babanin.de" aria-label="Email for CV password">contact@babanin.de</a> for the password.</p>
 						</div>
 					</div>
-					<div id="skills-content" class="skills-content">
+					<div id="skills-content" class="skills-content" role="region" aria-labelledby="skills-title">
 						<h1 id="skills-title" data-i18n="skills_title" itemprop="jobTitle">Professional Skills</h1>
 						<h3 id="cv-summary" data-i18n="cv_summary">CV Summary</h3>
 						<h5 id="cv-summary-text" data-i18n="cv_summary_text">As a seasoned software developer and leader with over 10 years in IT, I specialize in full-stack development, system architecture, and operational management. Below is an overview of my key skills and expertise, honed through diverse projects in dynamic environments.</h5>
@@ -127,7 +155,7 @@
 			</div>
 		</div>
 		
-		<a href="imprint.html" id="imprint-link" data-i18n="imprint_link">Imprint</a>
+		<a href="imprint.html" id="imprint-link" data-i18n="imprint_link" aria-label="View imprint information">Imprint</a>
 		
 		<script type="text/javascript">
 

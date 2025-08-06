@@ -124,24 +124,15 @@ initParticles();
 
 // Initialize i18n and translate content
 document.addEventListener('DOMContentLoaded', async function() {
-  // Import and initialize i18n
-  try {
-    const i18nModule = await import('./i18n/i18n.js');
-    const i18n = i18nModule.default;
-    
-    // Wait for i18n to be initialized
-    await i18n.initialized;
-    
-    // Function to translate all data-i18n attributes
-    function translatePage() {
-      // Handle elements with only text content
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        // Skip elements with child elements (HTML content)
-        if (element.children.length === 0) {
-          element.textContent = i18n.t(key);
-        }
-      });
+  // Import and initialize shared i18n
+  const { initializeI18n, translatePage, showContent } = await import('./i18n/shared.js');
+  const i18n = await initializeI18n();
+  
+  if (i18n) {
+    // Function to translate all data-i18n attributes with special handling for HTML content
+    function translatePageWithHTML() {
+      // Handle regular translations
+      translatePage(i18n);
       
       // Special handling for elements with HTML content
       // Skills summary
@@ -168,27 +159,13 @@ document.addEventListener('DOMContentLoaded', async function() {
       if (cvContact) {
         cvContact.innerHTML = i18n.t('cv_contact') + ' <a href="mailto:contact@babanin.de">' + i18n.t('cv_email_address') + '</a>.';
       }
-      
-      // Special handling for attributes
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-        const key = element.getAttribute('data-i18n-placeholder');
-        element.placeholder = i18n.t(key);
-      });
-      
-      document.querySelectorAll('[data-i18n-title]').forEach(element => {
-        const key = element.getAttribute('data-i18n-title');
-        element.title = i18n.t(key);
-      });
     }
     
     // Initial translation
-    translatePage();
+    translatePageWithHTML();
     
-    // Add loaded class to show content
-    const frame = document.querySelector('.frame');
-    if (frame) {
-      frame.classList.add('loaded');
-    }
+    // Show content
+    showContent();
     
     // Set up language switcher
     const languageSwitcher = document.getElementById('language-switcher');
@@ -208,18 +185,13 @@ document.addEventListener('DOMContentLoaded', async function() {
       languageSwitcher.addEventListener('change', function() {
         const newLanguage = this.value;
         if (i18n.setLanguage(newLanguage)) {
-          translatePage();
+          translatePageWithHTML();
         }
       });
     }
-  } catch (error) {
-    console.error('Failed to initialize i18n:', error);
-    
-    // Add loaded class even if there's an error
-    const frame = document.querySelector('.frame');
-    if (frame) {
-      frame.classList.add('loaded');
-    }
+  } else {
+    // Show content even if i18n fails
+    showContent();
   }
     const toggleButton = document.getElementById('toggle-particles');
     

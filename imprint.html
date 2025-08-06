@@ -12,7 +12,7 @@
         // Remove no-js class when JavaScript is available
         document.body.classList.remove('no-js');
     </script>
-    <div class="container">
+    <div class="container" role="main" aria-labelledby="imprint-header">
         <h1 id="imprint-header" data-i18n="imprint_header">Imprint</h1>
         
         <h2 id="imprint-info-heading" data-i18n="imprint_info_heading">Information according to § 5 TMG:</h2>
@@ -94,7 +94,7 @@
         
         <a href="index.html" class="back-link" id="imprint-back" data-i18n="imprint_back">← Back to main page</a>
         
-        <select id="language-switcher">
+        <select id="language-switcher" aria-label="Select language">
             <option value="en" selected>EN</option>
             <option value="de">DE</option>
         </select>

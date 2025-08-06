@@ -965,25 +965,38 @@ class WebGLParticles {
 }
 
 // Global function to initialize WebGL particles
-window.particlesJS = function(tag_id, params) {
-    window.webglParticles = new WebGLParticles(tag_id, params);
-};
-
-// Load function for JSON config (similar to original particles.js)
-window.particlesJS.load = function(tag_id, path_config_json, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', path_config_json);
-    xhr.onreadystatechange = function(data) {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                const params = JSON.parse(data.currentTarget.response);
-                window.particlesJS(tag_id, params);
-                if (callback) callback();
-            } else {
-                console.log('Error pJS - XMLHttpRequest status: ' + xhr.status);
-                console.log('Error pJS - File config not found');
-            }
-        }
+(function() {
+    let webglParticlesInstance = null;
+    
+    window.particlesJS = function(tag_id, params) {
+        webglParticlesInstance = new WebGLParticles(tag_id, params);
+        // Keep backward compatibility
+        window.webglParticles = webglParticlesInstance;
+        return webglParticlesInstance;
     };
-    xhr.send();
-};
+
+    // Load function for JSON config (similar to original particles.js)
+    window.particlesJS.load = function(tag_id, path_config_json, callback) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', path_config_json);
+        xhr.onreadystatechange = function(data) {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    const params = JSON.parse(data.currentTarget.response);
+                    const instance = window.particlesJS(tag_id, params);
+                    if (callback) callback(instance);
+                } else {
+                    console.log('Error pJS - XMLHttpRequest status: ' + xhr.status);
+                    console.log('Error pJS - File config not found');
+                    if (callback) callback(null);
+                }
+            }
+        };
+        xhr.send();
+    };
+    
+    // Add a method to get the current instance
+    window.particlesJS.getInstance = function() {
+        return webglParticlesInstance;
+    };
+})();

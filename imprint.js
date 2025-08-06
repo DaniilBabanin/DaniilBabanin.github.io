@@ -1,44 +1,15 @@
 // Initialize i18n for imprint page
 document.addEventListener('DOMContentLoaded', async function() {
-  // Import and initialize i18n
-  try {
-    const i18nModule = await import('./i18n/i18n.js');
-    const i18n = i18nModule.default;
-    
-    // Wait for i18n to be initialized
-    await i18n.initialized;
-    
-    // Function to translate all data-i18n attributes
-    function translatePage() {
-      // Handle elements with only text content
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        // Skip elements with child elements (HTML content)
-        if (element.children.length === 0) {
-          element.textContent = i18n.t(key);
-        }
-      });
-      
-      // Special handling for attributes
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-        const key = element.getAttribute('data-i18n-placeholder');
-        element.placeholder = i18n.t(key);
-      });
-      
-      document.querySelectorAll('[data-i18n-title]').forEach(element => {
-        const key = element.getAttribute('data-i18n-title');
-        element.title = i18n.t(key);
-      });
-    }
-    
+  // Import and initialize shared i18n
+  const { initializeI18n, translatePage, showContent } = await import('./i18n/shared.js');
+  const i18n = await initializeI18n();
+  
+  if (i18n) {
     // Initial translation
-    translatePage();
+    translatePage(i18n);
     
-    // Add loaded class to show content
-    const container = document.querySelector('.container');
-    if (container) {
-      container.classList.add('loaded');
-    }
+    // Show content
+    showContent();
     
     // Set up language switcher
     const languageSwitcher = document.getElementById('language-switcher');
@@ -47,20 +18,15 @@ document.addEventListener('DOMContentLoaded', async function() {
       languageSwitcher.addEventListener('change', function() {
         const newLanguage = this.value;
         if (i18n.setLanguage(newLanguage)) {
-          translatePage();
+          translatePage(i18n);
         }
       });
       
       // Set the selected option to the current language
       languageSwitcher.value = i18n.getCurrentLanguage();
     }
-  } catch (error) {
-    console.error('Failed to initialize i18n:', error);
-    
-    // Add loaded class even if there's an error
-    const container = document.querySelector('.container');
-    if (container) {
-      container.classList.add('loaded');
-    }
+  } else {
+    // Show content even if i18n fails
+    showContent();
   }
 });
