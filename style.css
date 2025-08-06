@@ -19,17 +19,17 @@ body {
 
 @font-face {
   font-family: "Lato-Regular";
-	src: url("font/Lato-Regular.ttf") format("woff2");
+	src: url("font/Lato-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EBGaramond-SemiBold";
-	src: url("font/EBGaramond-SemiBold.ttf") format("woff2");
+	src: url("font/EBGaramond-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EBGaramond-Regular";
-	src: url("font/EBGaramond-Regular.ttf") format("woff2");
+	src: url("font/EBGaramond-Regular.ttf") format("truetype");
 }
 
 div{
@@ -37,7 +37,7 @@ div{
 }
 
 #initial-content h1{
-	font-family: "Lato", sans-serif;
+	font-family: "Lato-Regular", sans-serif;
 	font-size: 50px;
   text-shadow: 2px 2px 3px #000;
   margin-top: 0;
@@ -50,7 +50,7 @@ div{
 }
 
 #skills-content h1{
-	font-family: "Lato", sans-serif;
+	font-family: "Lato-Regular", sans-serif;
 	font-size: 36px;
   text-shadow: 2px 2px 3px #000;
   margin-top: 0;
@@ -245,7 +245,7 @@ a[href^="mailto"] {
 }
 
 .skills-content p strong {
-  font-family: "EBGaramond-Semibold", serif;
+  font-family: "EBGaramond-SemiBold", serif;
   color: #ffffff;
   font-weight: bold;
 }

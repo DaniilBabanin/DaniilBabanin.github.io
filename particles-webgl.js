@@ -498,8 +498,16 @@ class WebGLParticles {
     
     resize() {
         const container = document.getElementById(this.tag_id);
-        this.canvas.width = container.clientWidth;
-        this.canvas.height = container.clientHeight;
+        if (this.canvas && container) {
+            // Check if canvas is properly attached to DOM
+            if (this.canvas.parentNode === container) {
+                // Ensure container has valid dimensions before setting canvas dimensions
+                const width = container.clientWidth || window.innerWidth;
+                const height = container.clientHeight || window.innerHeight;
+                this.canvas.width = width;
+                this.canvas.height = height;
+            }
+        }
     }
     
     animate() {
