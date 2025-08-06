@@ -3,7 +3,7 @@ export const translations = {
         // index.html translations
         "title": "Daniil Babanin",
         "meta_description": "Daniil Babanin - Software Developer",
-        "meta_keywords": "Daniil Babanin, Director Operations, System Architect, Software Developer, Programmer",
+        "meta_keywords": "Daniil Babanin, Operations Director, System Architect, Software Developer, Programmer",
         "meta_author": "Daniil Babanin",
         "name": "Daniil Babanin",
         "skills_summary": "View a summary of my skills",
@@ -113,7 +113,7 @@ export const translations = {
         // index.html translations
         "title": "Daniil Babanin",
         "meta_description": "Daniil Babanin - Softwareentwickler",
-        "meta_keywords": "Daniil Babanin, Director Operations, System Architekt, Softwareentwickler, Programmierer",
+        "meta_keywords": "Daniil Babanin, Operations Director, System Architekt, Softwareentwickler, Programmierer",
         "meta_author": "Daniil Babanin",
         "name": "Daniil Babanin",
         "skills_summary": "Sehen Sie sich eine Zusammenfassung meiner Fähigkeiten",

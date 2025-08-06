@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://babanin.de/sitemap.xml
+
+# Prevent crawling of password-protected content
+Disallow: /s/
+
+# Prevent crawling of specific file types
+Disallow: /*.pdf$
+Disallow: /*.zip$
