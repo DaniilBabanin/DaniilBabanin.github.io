@@ -114,6 +114,7 @@ a {
 a:hover {
   color: #A6E22E;
   text-decoration: underline;
+  transform: scale(1.15);
 }
 
 a[href^="mailto"]:hover {
@@ -207,6 +208,43 @@ a[href^="mailto"] {
 #initial-content.hiding, #skills-content:not(.showing) {
   opacity: 0;
   pointer-events: none;
+}
+
+.contact-options-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+}
+
+.contact-options {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.contact-options-fade1 {
+  animation: fadeIn 0.3s ease-in;
+  animation-delay: 1.0s;
+  opacity: 1;
+}
+
+.contact-options-fade2 {
+  animation: fadeIn 0.3s ease-in;
+  animation-delay: 1.1s;
+  opacity: 1;
+}
+
+.contact-options-fade3 {
+  animation: fadeIn 0.3s ease-in;
+  animation-delay: 1.2s;
+  opacity: 1;
+}
+
+.contact-options-fade4 {
+  animation: fadeIn 0.3s ease-in;
+  animation-delay: 1.3s;
+  opacity: 1;
 }
 
 #skills-content.showing {
