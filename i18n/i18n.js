@@ -12,18 +12,25 @@ class I18n {
   }
 
   async init() {
+    // Detect language first
+    this.currentLanguage = this.detectLanguage();
+    
     // Load translations
     try {
-      const translationsModule = await import('./translations.js');
-      this.translations = translationsModule.translations;
+      // Dynamically import the appropriate translation file based on detected language
+      if (this.currentLanguage === 'de') {
+        const translationsModule = await import('./translations-de.js');
+        this.translations = translationsModule.translations;
+      } else {
+        // Default to English
+        const translationsModule = await import('./translations-en.js');
+        this.translations = translationsModule.translations;
+      }
     } catch (error) {
       console.error('Failed to load translations:', error);
       // Fallback to empty translations
       this.translations = { en: {}, de: {} };
     }
-    
-    // Detect language
-    this.currentLanguage = this.detectLanguage();
   }
 
   detectLanguage() {
@@ -49,12 +56,27 @@ class I18n {
     return this.defaultLanguage;
   }
 
-  setLanguage(language) {
+  async setLanguage(language) {
     if (this.supportedLanguages.includes(language)) {
       this.currentLanguage = language;
       if (typeof localStorage !== 'undefined') {
         localStorage.setItem('language', language);
       }
+      
+      // Dynamically load translations for the new language
+      try {
+        let translationsModule;
+        if (language === 'de') {
+          translationsModule = await import('./translations-de.js');
+        } else {
+          // Default to English
+          translationsModule = await import('./translations-en.js');
+        }
+        this.translations = translationsModule.translations;
+      } catch (error) {
+        console.error(`Failed to load translations for ${language}:`, error);
+      }
+      
       return true;
     }
     return false;

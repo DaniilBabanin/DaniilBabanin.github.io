@@ -14,6 +14,24 @@ export async function initializeI18n() {
   }
 }
 
+// Function to dynamically load translations for a specific language
+export async function loadLanguageTranslations(language) {
+  try {
+    let translationsModule;
+    if (language === 'de') {
+      translationsModule = await import('./translations-de.js');
+    } else {
+      // Default to English
+      translationsModule = await import('./translations-en.js');
+    }
+    
+    return translationsModule.translations;
+  } catch (error) {
+    console.error(`Failed to load translations for ${language}:`, error);
+    return null;
+  }
+}
+
 export function translatePage(i18n) {
   if (!i18n) return;
   

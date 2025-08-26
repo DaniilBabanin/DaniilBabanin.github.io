@@ -102,6 +102,20 @@ function initParticles() {
     window.particlesJS('particles-js', getParticleConfig());
 }
 
+// Load particles asynchronously and fade them in
+setTimeout(() => {
+    initParticles();
+    
+    // Fade in particles after initialization
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+        // Fade in after a short delay to allow initialization
+        setTimeout(() => {
+            particlesContainer.style.opacity = '1';
+        }, 100);
+    }
+}, 2000);
+
 // Function to destroy particles
 function destroyParticles() {
     // Use the destroy method of the WebGLParticles instance if available
@@ -119,8 +133,6 @@ function destroyParticles() {
     window.webglParticles = null;
 }
 
-// Initialize particles with responsive configuration
-initParticles();
 
 // Initialize i18n and translate content
 document.addEventListener('DOMContentLoaded', async function() {
@@ -182,9 +194,9 @@ document.addEventListener('DOMContentLoaded', async function() {
       });
       
       // Add event listener for language change
-      languageSwitcher.addEventListener('change', function() {
+      languageSwitcher.addEventListener('change', async function() {
         const newLanguage = this.value;
-        if (i18n.setLanguage(newLanguage)) {
+        if (await i18n.setLanguage(newLanguage)) {
           translatePageWithHTML();
         }
       });

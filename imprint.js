@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     const languageSwitcher = document.getElementById('language-switcher');
     if (languageSwitcher) {
       // Add event listener for language change
-      languageSwitcher.addEventListener('change', function() {
+      languageSwitcher.addEventListener('change', async function() {
         const newLanguage = this.value;
-        if (i18n.setLanguage(newLanguage)) {
+        if (await i18n.setLanguage(newLanguage)) {
           translatePage(i18n);
         }
       });

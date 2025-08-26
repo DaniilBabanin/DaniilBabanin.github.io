@@ -573,6 +573,8 @@ canvas{
   height:100%;
   width: 100%;
   background:#1F1F1F;
+  opacity: 0;
+  transition: opacity 5s ease-in-out;
 }
 
 #toggle-particles {
