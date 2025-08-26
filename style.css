@@ -1,4 +1,9 @@
 @-moz-document url-prefix() {
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(102, 217, 239, 0.5) transparent;
+  }
+
   .frame {
     display: none;
   }
@@ -14,6 +19,19 @@
   .imprint-page .container.loaded {
     display: block;
   }
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 217, 239, 0.5);
+  border-radius: 30px;
 }
 
 html,body{
@@ -171,17 +189,6 @@ a[href^="mailto"] {
   height: 95%;
   padding-right: 15px; /* Adjust for scrollbar width */
   box-sizing: content-box;
-}
-
-/* Hide scrollbar for Webkit browsers */
-.frame.expanded .inner::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-/* Hide scrollbar for Firefox */
-.frame.expanded .inner {
-  scrollbar-width: none;
 }
 
 .inner{
