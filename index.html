@@ -21,9 +21,10 @@
 		<title data-i18n="title">Daniil Babanin</title>
 		<link rel="preload" as="font" href="/font/Lato-Regular.ttf" type="font/ttf" crossorigin="anonymous">
 		<link rel="preload" as="font" href="/font/EBGaramond-Regular.ttf" type="font/ttf" crossorigin="anonymous">
-		<link rel="prefetch" as="font" href="/font/SourceCodePro-Light.otf" type="font/otf" crossorigin="anonymous">
-		<link rel="prefetch" as="font" href="/font/EBGaramond-SemiBold.ttf" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="style.css">
+		<link rel="preload" as="font" href="/font/SourceCodePro-Light.otf" type="font/otf" crossorigin="anonymous">
+		<link rel="preload" href="particles-webgl.min.js" as="script">
+		<link rel="preload" href="app.min.js" as="script">
+		<link rel="stylesheet" href="style.min.css">
 		<link rel="icon" href="/favicon.ico">
 		<link rel="manifest" href="/manifest.json">
 		<meta name="theme-color" content="#66D9EF">
@@ -58,7 +59,6 @@
 		<div class="particles" id="particles-js" aria-hidden="true"></div>
 		<button id="toggle-particles" aria-label="Toggle particle animation">Disable Particles</button>
 		<script>
-			// Remove no-js class when JavaScript is available
 			document.body.classList.remove('no-js');
 		</script>
 		<script src="particles-webgl.min.js" defer></script>

@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "minify": "^14.1.0",
     "terser": "^5.43.1"
   }
 }

@@ -43,12 +43,6 @@ body {
 }
 
 @font-face {
-  font-family: "EBGaramond-SemiBold";
-  font-display: swap;
-	src: url("/font/EBGaramond-SemiBold.ttf") format("truetype");
-}
-
-@font-face {
   font-family: "EBGaramond-Regular";
   font-display: swap;
 	src: url("/font/EBGaramond-Regular.ttf") format("truetype");
@@ -336,7 +330,7 @@ a[href^="mailto"] {
 }
 
 .skills-content p strong {
-  font-family: "EBGaramond-SemiBold", serif;
+  font-family: "EBGaramond-Regular", serif;
   color: #ffffff;
   font-weight: bold;
 }
@@ -699,14 +693,14 @@ canvas{
 }
 
 .imprint-page h2 {
-  font-family: "EBGaramond-SemiBold", serif;
+  font-family: "EBGaramond-Regular", serif;
   margin-top: 30px;
   margin-bottom: 15px;
   color: #66D9EF;
 }
 
 .imprint-page h3 {
-  font-family: "EBGaramond-SemiBold", serif;
+  font-family: "EBGaramond-Regular", serif;
   margin-top: 25px;
   margin-bottom: 10px;
   color: #66D9EF;

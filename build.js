@@ -38,6 +38,10 @@ async function minifyJS() {
     await runCommand('npx terser ./i18n/translations-en.js -o ./i18n/translations-en.min.js -c -m');
     console.log('Minified ./i18n/ ');
 
+    // Minify css
+    await runCommand('npx minify style.css > style.min.css');
+    console.log('Minified css ');
+
     console.log('JavaScript minification complete!');
   } catch (error) {
     console.error('Error during minification:', error);
