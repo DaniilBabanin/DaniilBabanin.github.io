@@ -1,7 +1,7 @@
 // Shared i18n initialization code to avoid duplication between pages
 export async function initializeI18n() {
   try {
-    const i18nModule = await import('./i18n.js');
+    const i18nModule = await import('./i18n.min.js');
     const i18n = i18nModule.default;
     
     // Wait for i18n to be initialized
@@ -19,10 +19,10 @@ export async function loadLanguageTranslations(language) {
   try {
     let translationsModule;
     if (language === 'de') {
-      translationsModule = await import('./translations-de.js');
+      translationsModule = await import('./translations-de.min.js');
     } else {
       // Default to English
-      translationsModule = await import('./translations-en.js');
+      translationsModule = await import('./translations-en.min.js');
     }
     
     return translationsModule.translations;

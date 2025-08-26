@@ -19,11 +19,11 @@ class I18n {
     try {
       // Dynamically import the appropriate translation file based on detected language
       if (this.currentLanguage === 'de') {
-        const translationsModule = await import('./translations-de.js');
+        const translationsModule = await import('./translations-de.min.js');
         this.translations = translationsModule.translations;
       } else {
         // Default to English
-        const translationsModule = await import('./translations-en.js');
+        const translationsModule = await import('./translations-en.min.js');
         this.translations = translationsModule.translations;
       }
     } catch (error) {
@@ -67,10 +67,10 @@ class I18n {
       try {
         let translationsModule;
         if (language === 'de') {
-          translationsModule = await import('./translations-de.js');
+          translationsModule = await import('./translations-de.min.js');
         } else {
           // Default to English
-          translationsModule = await import('./translations-en.js');
+          translationsModule = await import('./translations-en.min.js');
         }
         this.translations = translationsModule.translations;
       } catch (error) {

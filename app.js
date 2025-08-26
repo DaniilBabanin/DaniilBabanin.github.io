@@ -114,7 +114,7 @@ setTimeout(() => {
             particlesContainer.style.opacity = '1';
         }, 100);
     }
-}, 2000);
+}, 100);
 
 // Function to destroy particles
 function destroyParticles() {
@@ -137,7 +137,7 @@ function destroyParticles() {
 // Initialize i18n and translate content
 document.addEventListener('DOMContentLoaded', async function() {
   // Import and initialize shared i18n
-  const { initializeI18n, translatePage, showContent } = await import('./i18n/shared.js');
+  const { initializeI18n, translatePage, showContent } = await import('./i18n/shared.min.js');
   const i18n = await initializeI18n();
   
   if (i18n) {

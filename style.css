@@ -32,21 +32,25 @@ body {
 
 @font-face {
 	font-family: "SourceCodePro-Light";
+  font-display: swap;
 	src: url("/font/SourceCodePro-Light.otf") format("opentype");
 }
 
 @font-face {
   font-family: "Lato-Regular";
+  font-display: swap;
 	src: url("/font/Lato-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EBGaramond-SemiBold";
+  font-display: swap;
 	src: url("/font/EBGaramond-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "EBGaramond-Regular";
+  font-display: swap;
 	src: url("/font/EBGaramond-Regular.ttf") format("truetype");
 }
 
@@ -574,7 +578,7 @@ canvas{
   width: 100%;
   background:#1F1F1F;
   opacity: 0;
-  transition: opacity 5s ease-in-out;
+  transition: opacity 2s ease-in-out;
 }
 
 #toggle-particles {

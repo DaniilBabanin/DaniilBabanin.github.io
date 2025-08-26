@@ -1,7 +1,7 @@
 // Initialize i18n for imprint page
 document.addEventListener('DOMContentLoaded', async function() {
   // Import and initialize shared i18n
-  const { initializeI18n, translatePage, showContent } = await import('./i18n/shared.js');
+  const { initializeI18n, translatePage, showContent } = await import('./i18n/shared.min.js');
   const i18n = await initializeI18n();
   
   if (i18n) {
