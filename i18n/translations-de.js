@@ -77,6 +77,8 @@ export const translations = {
         "cv_summary_footer": "Diese Zusammenfassung hebt meine Kernkompetenzen hervor, während die Details für die öffentliche Ansicht allgemein gehalten werden.",
         "cv_contact": "Für einen vollständigen Lebenslauf mit spezifischen Erfahrungen kontaktieren Sie mich bitte unter",
         "imprint_link": "Impressum",
+        "particles_disable": "Partikel deaktivieren",
+        "particles_enable": "Partikel aktivieren",
         // imprint.html translations
         "imprint_title": "Impressum - Daniil Babanin",
         "imprint_header": "Impressum",

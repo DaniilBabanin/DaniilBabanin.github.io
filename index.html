@@ -11,19 +11,17 @@
 		<meta property="og:type" content="website">
 		<meta property="og:title" content="Daniil Babanin">
 		<meta property="og:description" content="Operations Director, System Architect, Software Developer">
-		<meta property="og:image" content="/img/1024×630.png">
-		<meta name="twitter:card" content="/img/1024×630.png">
+		<meta property="og:image" content="https://babanin.de/img/1024x630.jpg">
+		<meta name="twitter:card" content="summary_large_image">
 		<meta property="twitter:domain" content="babanin.de">
 		<meta property="twitter:url" content="https://babanin.de">
 		<meta name="twitter:title" content="Daniil Babanin">
 		<meta name="twitter:description" content="Operations Director, System Architect, Software Developer">
-		<meta name="twitter:image" content="/img/1024×630.png">
+		<meta name="twitter:image" content="https://babanin.de/img/1024x630.jpg">
 		<title data-i18n="title">Daniil Babanin</title>
-		<link rel="preload" as="font" href="/font/Lato-Regular.ttf" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" as="font" href="/font/EBGaramond-Regular.ttf" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" as="font" href="/font/SourceCodePro-Light.otf" type="font/otf" crossorigin="anonymous">
-		<link rel="preload" href="particles-webgl.min.js" as="script">
-		<link rel="preload" href="app.min.js" as="script">
+		<link rel="preload" as="font" href="/font/Lato-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" as="font" href="/font/EBGaramond-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+		<link rel="preload" as="font" href="/font/SourceCodePro-Light.woff2" type="font/woff2" crossorigin="anonymous">
 		<link rel="stylesheet" href="style.min.css">
 		<link rel="icon" href="/favicon.ico">
 		<link rel="manifest" href="/manifest.json">
@@ -188,6 +186,11 @@
 		</div>
 		
 		<a href="imprint.html" id="imprint-link" data-i18n="imprint_link" aria-label="View imprint information">Imprint</a>
+
+		<select id="language-switcher" aria-label="Select language">
+			<option value="en" selected>EN</option>
+			<option value="de">DE</option>
+		</select>
 		
 		<script type="text/javascript">
 
@@ -247,6 +250,16 @@
 				document.addEventListener('expandSkillsRequested', function(e) {
 					expandSkills();
 				});
+
+				// Fallback so the link works even if i18n fails to load;
+				// app.js re-attaches its own handler after translations replace this link
+				const skillsLink = document.getElementById('skills-link');
+				if (skillsLink) {
+					skillsLink.addEventListener('click', function(e) {
+						e.preventDefault();
+						expandSkills();
+					});
+				}
 				
 				// Handle click outside frame to collapse
 				body.addEventListener('click', function(e) {

@@ -51,19 +51,19 @@ body {
 @font-face {
 	font-family: "SourceCodePro-Light";
   font-display: swap;
-	src: url("/font/SourceCodePro-Light.otf") format("opentype");
+	src: url("/font/SourceCodePro-Light.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Lato-Regular";
   font-display: swap;
-	src: url("/font/Lato-Regular.ttf") format("truetype");
+	src: url("/font/Lato-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "EBGaramond-Regular";
   font-display: swap;
-	src: url("/font/EBGaramond-Regular.ttf") format("truetype");
+	src: url("/font/EBGaramond-Regular.woff2") format("woff2");
 }
 
 div{

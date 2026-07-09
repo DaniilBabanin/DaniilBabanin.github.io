@@ -128,17 +128,10 @@ class WebGLParticles {
         this.lines = [];
         this.quadtree = null;
         this.animationId = null;
-        
-        // Pre-allocated arrays for better performance
-        this.positions = [];
-        this.sizes = [];
-        this.colors = [];
-        this.linePositions = [];
-        this.lineColors = [];
-        
+
         // Frame rate limiting
         this.lastFrameTime = 0;
-        this.frameInterval = 1000 / 24; // 60 FPS target
+        this.frameInterval = 1000 / 24; // 24 FPS cap
         
         this.init();
     }
@@ -383,6 +376,10 @@ class WebGLParticles {
         for (let i = 0; i < particleCount; i++) {
             this.particles.push(this.createParticle());
         }
+
+        // Line color never changes - convert once instead of per line per frame
+        this.lineColor = this.hexToRgb(this.config.particles.line_linked.color);
+        this.particlesDirty = true;
     }
     
     mergeConfig(target, source) {
@@ -470,14 +467,16 @@ class WebGLParticles {
     
     setupEvents() {
         const canvas = this.canvas;
-        
-        canvas.addEventListener('mousemove', (e) => {
+
+        // Named handlers so destroy() can actually remove them
+        this.onMouseMove = (e) => {
             const rect = canvas.getBoundingClientRect();
             this.mouse.x = e.clientX - rect.left;
             this.mouse.y = e.clientY - rect.top;
-        });
-        
-        canvas.addEventListener('click', () => {
+        };
+        canvas.addEventListener('mousemove', this.onMouseMove);
+
+        this.onClick = () => {
             if (this.config.interactivity.events.onclick.enable) {
                 const mode = this.config.interactivity.events.onclick.mode;
                 if (mode === 'push') {
@@ -487,13 +486,16 @@ class WebGLParticles {
                             y: this.mouse.y
                         }));
                     }
+                    this.particlesDirty = true;
                 }
             }
-        });
-        
-        window.addEventListener('resize', () => {
+        };
+        canvas.addEventListener('click', this.onClick);
+
+        this.onResize = () => {
             this.resize();
-        });
+        };
+        window.addEventListener('resize', this.onResize);
     }
     
     resize() {
@@ -548,7 +550,8 @@ class WebGLParticles {
         // Update particles and insert into quadtree
         for (let i = 0; i < this.particles.length; i++) {
             const p = this.particles[i];
-            
+            p.idx = i; // stamp index for O(1) pair dedup instead of indexOf
+
             // Move particle
             if (config.particles.move.enable) {
                 const ms = config.particles.move.speed / 2;
@@ -614,7 +617,7 @@ class WebGLParticles {
         }
         
         // Find lines between particles using quadtree for spatial partitioning
-        this.lines = [];
+        this.lines.length = 0;
         if (config.particles.line_linked.enable) {
             // For each particle, query nearby particles using quadtree
             for (let i = 0; i < this.particles.length; i++) {
@@ -638,7 +641,7 @@ class WebGLParticles {
                     
                     // Check if we've already checked this pair (to avoid duplicates)
                     // We only check pairs where p1 comes before p2 in the array
-                    if (this.particles.indexOf(p1) >= this.particles.indexOf(p2)) continue;
+                    if (p1.idx >= p2.idx) continue;
                     
                     this.checkAndAddLine(p1, p2, config);
                 }
@@ -659,7 +662,7 @@ class WebGLParticles {
                         for (let j = 0; j < rightParticles.length; j++) {
                             const p2 = rightParticles[j];
                             if (p1 === p2) continue;
-                            if (this.particles.indexOf(p1) >= this.particles.indexOf(p2)) continue;
+                            if (p1.idx >= p2.idx) continue;
                             
                             // Create a virtual particle for connection
                             const virtualP1 = { x: p1.x + canvas.width, y: p1.y };
@@ -678,7 +681,7 @@ class WebGLParticles {
                         for (let j = 0; j < leftParticles.length; j++) {
                             const p2 = leftParticles[j];
                             if (p1 === p2) continue;
-                            if (this.particles.indexOf(p1) >= this.particles.indexOf(p2)) continue;
+                            if (p1.idx >= p2.idx) continue;
                             
                             // Create a virtual particle for connection
                             const virtualP1 = { x: p1.x - canvas.width, y: p1.y };
@@ -697,7 +700,7 @@ class WebGLParticles {
                         for (let j = 0; j < bottomParticles.length; j++) {
                             const p2 = bottomParticles[j];
                             if (p1 === p2) continue;
-                            if (this.particles.indexOf(p1) >= this.particles.indexOf(p2)) continue;
+                            if (p1.idx >= p2.idx) continue;
                             
                             // Create a virtual particle for connection
                             const virtualP1 = { x: p1.x, y: p1.y + canvas.height };
@@ -716,7 +719,7 @@ class WebGLParticles {
                         for (let j = 0; j < topParticles.length; j++) {
                             const p2 = topParticles[j];
                             if (p1 === p2) continue;
-                            if (this.particles.indexOf(p1) >= this.particles.indexOf(p2)) continue;
+                            if (p1.idx >= p2.idx) continue;
                             
                             // Create a virtual particle for connection
                             const virtualP1 = { x: p1.x, y: p1.y - canvas.height };
@@ -792,124 +795,131 @@ class WebGLParticles {
         
         // Draw particles
         if (this.particles.length > 0) {
-            // Use pre-allocated arrays for better performance
-            this.positions.length = 0;
-            this.sizes.length = 0;
-            this.colors.length = 0;
-            
-            for (let i = 0; i < this.particles.length; i++) {
-                const p = this.particles[i];
-                this.positions.push(p.x, p.y);
-                this.sizes.push(p.radius * 2); // diameter
-                this.colors.push(
-                    p.color.r / 255,
-                    p.color.g / 255,
-                    p.color.b / 255,
-                    p.opacity
-                );
+            const count = this.particles.length;
+
+            // Reuse one typed array; only positions change per frame
+            if (!this.positionsArray || this.positionsArray.length < count * 2) {
+                this.positionsArray = new Float32Array(count * 2);
             }
-            
+            for (let i = 0; i < count; i++) {
+                const p = this.particles[i];
+                this.positionsArray[i * 2] = p.x;
+                this.positionsArray[i * 2 + 1] = p.y;
+            }
+
             // Bind particle program
             gl.useProgram(this.program);
-            
+
             // Set resolution
             gl.uniform2f(this.uniformLocations.resolution, canvas.width, canvas.height);
-            
+
             // Bind position buffer
             gl.bindBuffer(gl.ARRAY_BUFFER, this.particlePositionBuffer);
             // Only reallocate buffer if size has changed
-            if (this.positions.length * 4 > this.particlePositionBufferSize || !this.particlePositionBufferSize) {
-                this.particlePositionBufferSize = this.positions.length * 4; // 4 bytes per float
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.positions), gl.DYNAMIC_DRAW);
+            if (count * 8 > this.particlePositionBufferSize || !this.particlePositionBufferSize) {
+                this.particlePositionBufferSize = count * 8; // 2 floats * 4 bytes
+                gl.bufferData(gl.ARRAY_BUFFER, this.positionsArray.subarray(0, count * 2), gl.DYNAMIC_DRAW);
             } else {
-                gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(this.positions));
+                gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.positionsArray.subarray(0, count * 2));
             }
             gl.enableVertexAttribArray(this.attribLocations.position);
             gl.vertexAttribPointer(this.attribLocations.position, 2, gl.FLOAT, false, 0, 0);
-            
+
+            // Sizes and colors are constant per particle - upload only when the set changes
+            if (this.particlesDirty) {
+                const sizes = new Float32Array(count);
+                const colors = new Float32Array(count * 4);
+                for (let i = 0; i < count; i++) {
+                    const p = this.particles[i];
+                    sizes[i] = p.radius * 2; // diameter
+                    colors[i * 4] = p.color.r / 255;
+                    colors[i * 4 + 1] = p.color.g / 255;
+                    colors[i * 4 + 2] = p.color.b / 255;
+                    colors[i * 4 + 3] = p.opacity;
+                }
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.particleSizeBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, sizes, gl.STATIC_DRAW);
+                gl.bindBuffer(gl.ARRAY_BUFFER, this.particleColorBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, colors, gl.STATIC_DRAW);
+                this.particlesDirty = false;
+            }
+
             // Bind size buffer
             gl.bindBuffer(gl.ARRAY_BUFFER, this.particleSizeBuffer);
-            // Only reallocate buffer if size has changed
-            if (this.sizes.length * 4 > this.particleSizeBufferSize || !this.particleSizeBufferSize) {
-                this.particleSizeBufferSize = this.sizes.length * 4; // 4 bytes per float
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.sizes), gl.DYNAMIC_DRAW);
-            } else {
-                gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(this.sizes));
-            }
             gl.enableVertexAttribArray(this.attribLocations.size);
             gl.vertexAttribPointer(this.attribLocations.size, 1, gl.FLOAT, false, 0, 0);
-            
+
             // Bind color buffer
             gl.bindBuffer(gl.ARRAY_BUFFER, this.particleColorBuffer);
-            // Only reallocate buffer if size has changed
-            if (this.colors.length * 4 > this.particleColorBufferSize || !this.particleColorBufferSize) {
-                this.particleColorBufferSize = this.colors.length * 4; // 4 bytes per float
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.colors), gl.DYNAMIC_DRAW);
-            } else {
-                gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(this.colors));
-            }
             gl.enableVertexAttribArray(this.attribLocations.color);
             gl.vertexAttribPointer(this.attribLocations.color, 4, gl.FLOAT, false, 0, 0);
-            
+
             // Draw particles
-            gl.drawArrays(gl.POINTS, 0, this.particles.length);
+            gl.drawArrays(gl.POINTS, 0, count);
         }
         
         // Draw lines
         if (this.lines.length > 0) {
-            // Use pre-allocated arrays for better performance
-            this.linePositions.length = 0;
-            this.lineColors.length = 0;
-            
-            for (let i = 0; i < this.lines.length; i++) {
-                const line = this.lines[i];
-                this.linePositions.push(line.x1, line.y1, line.x2, line.y2);
-                // Use line color from config or default to white
-                const lineColor = this.hexToRgb(this.config.particles.line_linked.color);
-                this.lineColors.push(
-                    lineColor.r / 255,
-                    lineColor.g / 255,
-                    lineColor.b / 255,
-                    line.opacity,
-                    lineColor.r / 255,
-                    lineColor.g / 255,
-                    lineColor.b / 255,
-                    line.opacity
-                );
+            const lineCount = this.lines.length;
+
+            // Reuse growable typed arrays instead of reallocating every frame
+            if (!this.linePosArray || this.linePosArray.length < lineCount * 4) {
+                this.linePosArray = new Float32Array(lineCount * 8); // 2x headroom
+                this.lineColArray = new Float32Array(lineCount * 16);
             }
-            
+            const r = this.lineColor.r / 255;
+            const g = this.lineColor.g / 255;
+            const b = this.lineColor.b / 255;
+            for (let i = 0; i < lineCount; i++) {
+                const line = this.lines[i];
+                const p = i * 4;
+                const c = i * 8;
+                this.linePosArray[p] = line.x1;
+                this.linePosArray[p + 1] = line.y1;
+                this.linePosArray[p + 2] = line.x2;
+                this.linePosArray[p + 3] = line.y2;
+                this.lineColArray[c] = r;
+                this.lineColArray[c + 1] = g;
+                this.lineColArray[c + 2] = b;
+                this.lineColArray[c + 3] = line.opacity;
+                this.lineColArray[c + 4] = r;
+                this.lineColArray[c + 5] = g;
+                this.lineColArray[c + 6] = b;
+                this.lineColArray[c + 7] = line.opacity;
+            }
+
             // Bind line program
             gl.useProgram(this.lineProgram);
-            
+
             // Set resolution
             gl.uniform2f(this.uniformLocations.lineResolution, canvas.width, canvas.height);
-            
+
             // Bind line position buffer
             gl.bindBuffer(gl.ARRAY_BUFFER, this.linePositionBuffer);
             // Only reallocate buffer if size has changed
-            if (this.linePositions.length * 4 > this.linePositionBufferSize || !this.linePositionBufferSize) {
-                this.linePositionBufferSize = this.linePositions.length * 4; // 4 bytes per float
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.linePositions), gl.DYNAMIC_DRAW);
+            if (lineCount * 16 > this.linePositionBufferSize || !this.linePositionBufferSize) {
+                this.linePositionBufferSize = this.linePosArray.length * 4; // bytes
+                gl.bufferData(gl.ARRAY_BUFFER, this.linePosArray, gl.DYNAMIC_DRAW);
             } else {
-                gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(this.linePositions));
+                gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.linePosArray.subarray(0, lineCount * 4));
             }
             gl.enableVertexAttribArray(this.lineAttribLocations.position);
             gl.vertexAttribPointer(this.lineAttribLocations.position, 2, gl.FLOAT, false, 0, 0);
-            
+
             // Bind line color buffer
             gl.bindBuffer(gl.ARRAY_BUFFER, this.lineColorBuffer);
             // Only reallocate buffer if size has changed
-            if (this.lineColors.length * 4 > this.lineColorBufferSize || !this.lineColorBufferSize) {
-                this.lineColorBufferSize = this.lineColors.length * 4; // 4 bytes per float
-                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.lineColors), gl.DYNAMIC_DRAW);
+            if (lineCount * 32 > this.lineColorBufferSize || !this.lineColorBufferSize) {
+                this.lineColorBufferSize = this.lineColArray.length * 4; // bytes
+                gl.bufferData(gl.ARRAY_BUFFER, this.lineColArray, gl.DYNAMIC_DRAW);
             } else {
-                gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(this.lineColors));
+                gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.lineColArray.subarray(0, lineCount * 8));
             }
             gl.enableVertexAttribArray(this.lineAttribLocations.color);
             gl.vertexAttribPointer(this.lineAttribLocations.color, 4, gl.FLOAT, false, 0, 0);
-            
+
             // Draw lines
-            gl.drawArrays(gl.LINES, 0, this.lines.length * 2);
+            gl.drawArrays(gl.LINES, 0, lineCount * 2);
         }
     }
     
@@ -925,6 +935,7 @@ class WebGLParticles {
             this.canvas.removeEventListener('mousemove', this.onMouseMove);
             this.canvas.removeEventListener('click', this.onClick);
         }
+        window.removeEventListener('resize', this.onResize);
         
         // Clear particles and lines
         this.particles = [];

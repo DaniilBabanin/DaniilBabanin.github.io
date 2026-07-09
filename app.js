@@ -93,28 +93,26 @@ function getParticleConfig() {
     };
 }
 
-// Store the particlesJS instance and animation frame ID
-let particlesInstance = null;
-let animationFrameId = null;
+// Particles on by default; off only if user explicitly disabled them
+let particlesEnabled = localStorage.getItem('particles') !== 'off';
 
 // Function to initialize particles
 function initParticles() {
     window.particlesJS('particles-js', getParticleConfig());
-}
 
-// Load particles asynchronously and fade them in
-setTimeout(() => {
-    initParticles();
-    
     // Fade in particles after initialization
     const particlesContainer = document.getElementById('particles-js');
     if (particlesContainer) {
-        // Fade in after a short delay to allow initialization
         setTimeout(() => {
             particlesContainer.style.opacity = '1';
         }, 100);
     }
-}, 100);
+}
+
+// Load particles asynchronously and fade them in
+if (particlesEnabled) {
+    setTimeout(initParticles, 100);
+}
 
 // Function to destroy particles
 function destroyParticles() {
@@ -131,6 +129,17 @@ function destroyParticles() {
     
     // Clear the global reference
     window.webglParticles = null;
+}
+
+// Update toggle button label, translated when i18n is ready
+function updateToggleButton() {
+    const button = document.getElementById('toggle-particles');
+    if (!button) return;
+    const key = particlesEnabled ? 'particles_disable' : 'particles_enable';
+    const label = window.i18n ? window.i18n.t(key) : key;
+    button.textContent = label !== key
+        ? label
+        : (particlesEnabled ? 'Disable Particles' : 'Enable Particles');
 }
 
 
@@ -159,18 +168,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
       }
       
-      // Full CV
-      const fullCV = document.getElementById('full-cv');
-      if (fullCV) {
-        fullCV.innerHTML = i18n.t('full_cv') + ' <a href="https://next.babanin.de/s/mADYT7MrqL6cTKs">' + i18n.t('cv_here') + '</a> ' + 
-          i18n.t('cv_email') + ' <a href="mailto:contact@babanin.de">' + i18n.t('cv_email_address') + '</a> ' + i18n.t('cv_password');
-      }
-      
       // CV contact
       const cvContact = document.getElementById('cv-contact');
       if (cvContact) {
         cvContact.innerHTML = i18n.t('cv_contact') + ' <a href="mailto:contact@babanin.de">' + i18n.t('cv_email_address') + '</a>.';
       }
+
+      // Toggle button label
+      updateToggleButton();
     }
     
     // Initial translation
@@ -182,17 +187,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Set up language switcher
     const languageSwitcher = document.getElementById('language-switcher');
     if (languageSwitcher) {
-      // Populate language options
-      i18n.getSupportedLanguages().forEach(lang => {
-        const option = document.createElement('option');
-        option.value = lang;
-        option.textContent = lang.toUpperCase();
-        if (lang === i18n.getCurrentLanguage()) {
-          option.selected = true;
-        }
-        languageSwitcher.appendChild(option);
-      });
-      
+      // Set the selected option to the current language
+      languageSwitcher.value = i18n.getCurrentLanguage();
+
       // Add event listener for language change
       languageSwitcher.addEventListener('change', async function() {
         const newLanguage = this.value;
@@ -206,38 +203,38 @@ document.addEventListener('DOMContentLoaded', async function() {
     showContent();
   }
     const toggleButton = document.getElementById('toggle-particles');
-    
+
     if (toggleButton) {
+        updateToggleButton();
+
         toggleButton.addEventListener('click', function() {
-            const particlesContainer = document.getElementById('particles-js');
-            const canvas = particlesContainer.querySelector('canvas');
-            
-            if (canvas) {
-                if (canvas.style.display === 'none') {
-                    canvas.style.display = 'block';
-                    this.textContent = 'Disable Particles';
-                    // Reinitialize particles
-                    initParticles();
-                } else {
-                    canvas.style.display = 'none';
-                    this.textContent = 'Enable Particles';
-                    // Destroy particles to stop calculations
-                    destroyParticles();
-                }
-            } else {
-                // If no canvas exists, create particles
-                this.textContent = 'Disable Particles';
+            particlesEnabled = !particlesEnabled;
+            localStorage.setItem('particles', particlesEnabled ? 'on' : 'off');
+
+            if (particlesEnabled) {
                 initParticles();
+            } else {
+                // Destroy particles to stop calculations
+                destroyParticles();
             }
+
+            updateToggleButton();
         });
     }
-    
-    // Handle window resize to adjust particles for device changes
+
+    // Handle window resize to adjust particles for device changes.
+    // Debounced, and height-only changes (mobile URL bar) are ignored.
+    let resizeTimer = null;
+    let lastWidth = window.innerWidth;
     window.addEventListener('resize', function() {
-        // Destroy existing particles
-        destroyParticles();
-        
-        // Reinitialize with new configuration after a short delay
-        setTimeout(initParticles, 100);
+        if (window.innerWidth === lastWidth) return;
+        lastWidth = window.innerWidth;
+
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (!particlesEnabled) return;
+            destroyParticles();
+            setTimeout(initParticles, 100);
+        }, 250);
     });
 });

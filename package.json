@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "terser app.js -o app.min.js -c -m && terser imprint.js -o imprint.min.js -c -m && terser particles-webgl.js -o particles-webgl.min.js -c -m && terser i18n/i18n.js -o i18n/i18n.min.js -c -m && terser i18n/shared.js -o i18n/shared.min.js -c -m && terser i18n/translations-de.js -o i18n/translations-de.min.js -c -m && terser i18n/translations-en.js -o i18n/translations-en.min.js -c -m && minify style.css > style.min.css"
+  },
   "devDependencies": {
     "minify": "^14.1.0",
     "terser": "^5.43.1"

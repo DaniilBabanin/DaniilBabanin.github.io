@@ -77,6 +77,8 @@ export const translations = {
         "cv_summary_footer": "This summary highlights my core competencies while keeping details general for public viewing.",
         "cv_contact": "For a full CV with specific experiences, please contact me at",
         "imprint_link": "Imprint",
+        "particles_disable": "Disable Particles",
+        "particles_enable": "Enable Particles",
         // imprint.html translations
         "imprint_title": "Imprint - Daniil Babanin",
         "imprint_header": "Imprint",
