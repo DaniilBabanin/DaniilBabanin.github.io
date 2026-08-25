@@ -2,8 +2,8 @@ export const translations = {
     de: {
         // index.html translations
         "title": "Daniil Babanin",
-        "meta_description": "Daniil Babanin - Softwareentwickler",
-        "meta_keywords": "Daniil Babanin, Operations Director, System Architekt, Softwareentwickler, Programmierer",
+        "meta_description": "Daniil Babanin - Application Manager (Investment- und Firmenkundengeschäft), Operations Director, Systemarchitekt, Softwareentwickler",
+        "meta_keywords": "Daniil Babanin, Application Manager, Investment Banking, Operations Director, System Architekt, Softwareentwickler, Programmierer",
         "meta_author": "Daniil Babanin",
         "name": "Daniil Babanin",
         "skills_summary": "Sehen Sie sich eine Zusammenfassung meiner Fähigkeiten",
@@ -15,7 +15,17 @@ export const translations = {
         "cv_password": "für das Passwort.",
         "skills_title": "Professionelle Fähigkeiten",
         "cv_summary": "Lebenslauf-Zusammenfassung",
-        "cv_summary_text": "Als erfahrener Softwareentwickler und Führungskraft mit über 10 Jahren in der IT spezialisiere ich mich auf Full-Stack-Entwicklung, Systemarchitektur und operatives Management. Im Folgenden finden Sie einen Überblick über meine Schlüsselkompetenzen und Expertise, die durch diverse Projekte in dynamischen Umgebungen geschärft wurden.",
+        "cv_summary_text": "Als erfahrener Softwareentwickler und Führungskraft mit über 10 Jahren in der IT — derzeit Application Manager im Investment- und Firmenkundengeschäft bei der ODDO BHF SE — spezialisiere ich mich auf Finanzanwendungen, Systemarchitektur und operatives Management. Im Folgenden finden Sie einen Überblick über meine Schlüsselkompetenzen und Expertise, die durch diverse Projekte in dynamischen Umgebungen geschärft wurden.",
+        // Current Role content
+        "current_role": "Aktuelle Rolle",
+        "current_role_heading": "Application Manager — Investment- und Firmenkundengeschäft (ODDO BHF SE):",
+        "current_role_li1": "Anwendungsmanagement und Third-Level-Produktionssupport für geschäftskritische Finanzanwendungen: Buchung, regulatorisches Berichtswesen und Management-Reporting.",
+        "current_role_li2": "Regulatorisches Berichtswesen für deutsche Aufsichtsbehörden und die Europäische Zentralbank — Abstimmung, Datenherkunft, Prüfbarkeit.",
+        "current_role_li3": "Reverse Engineering von Herstellersoftware (Finastra): Wiederaufbau eines internen, reproduzierbaren Build-Prozesses für Customizing.",
+        "current_role_li4": "End-to-End-Transaktionsüberwachung mit Grafana, Loki und OpenTelemetry über OpenShift- und Kafka-basierte Plattformen.",
+        "current_role_li5": "Modernisierung der Datenintegration mit Apache Hop, SQL Server, Control-M und OpenShift.",
+        "current_role_li6": "Interne KI-Werkzeuge unter Banken-Sicherheitsleitplanken: Coding-Assistenten, Dokumentkonvertierung, OCR, lokale Wissenssuche.",
+        "current_role_li7": "C4-Architekturdokumentation, Runbooks und Verfahrensdokumentation; Schulung von Kollegen zu Git, KI-gestützter Entwicklung und Kanban.",
         // Skills section headings
         "technical_expertise": "Technische Expertise",
         "cloud_devops": "Cloud & DevOps",
@@ -29,7 +39,7 @@ export const translations = {
         "change_management": "Veränderungsmanagement",
         // Technical Expertise content
         "full_stack_dev": "Full-Stack-Entwicklung & Architektur:",
-        "full_stack_dev_li1": "Versiert in den Sprachen: JavaScript, TypeScript, Solidity, HTML/CSS, SQL (MySQL).",
+        "full_stack_dev_li1": "Versiert in den Sprachen: JavaScript, TypeScript, Java, SQL (SQL Server, MySQL), PowerShell, Solidity, HTML/CSS.",
         "full_stack_dev_li2": "Frameworks: Node.js, React, Svelte für den Aufbau skalierbarer Frontend- und Backend-Systeme.",
         "full_stack_dev_li3": "App-Entwicklung: Plattformübergreifende Apps (Android/iOS), Progressive Web Apps (PWAs).",
         "full_stack_dev_li4": "Software-Architektur: End-to-End-Design hochperformanter, sicherer Systeme.",
@@ -38,7 +48,7 @@ export const translations = {
         "cloud_devops_heading": "Cloud & DevOps:",
         "cloud_devops_li1": "Infrastruktur: AWS (EC2, S3, Lambda), Cloudflare, Kubernetes-Cluster-Management.",
         "cloud_devops_li2": "CI/CD-Pipelines: Automatisierte Build- und Deployment-Prozesse (z. B. Jenkins, GitLab CI).",
-        "cloud_devops_li3": "Containerisierung: Docker, Microservices-Architekturen.",
+        "cloud_devops_li3": "Containerisierung: Docker, OpenShift/Kubernetes, Microservices-Architekturen.",
         // Web3 & Innovation content
         "web3_innovation_heading": "Web3 & Innovation:",
         "web3_innovation_li1": "Entwicklung von Smart Contracts mit Solidity.",
@@ -53,7 +63,7 @@ export const translations = {
         // Operational Excellence content
         "operational_excellence_heading": "Operative Exzellenz:",
         "operational_excellence_li1": "Reduzierung der Time-to-Market durch Prozessoptimierung (Kanban/Scrum).",
-        "operational_excellence_li2": "Implementierung von Monitoring-Tools (z. B. Prometheus/Grafana) zur Fehlerprävention.",
+        "operational_excellence_li2": "Implementierung von Monitoring und Observability (Prometheus/Grafana, Loki, OpenTelemetry) zur Fehlerprävention und Transaktionsverfolgung.",
         "operational_excellence_li3": "Skalierung von IT-Infrastrukturen für das Geschäftswachstum (von Startup zu Scale-up).",
         // Business Impact content
         "business_impact_heading": "Geschäftliche Auswirkungen:",

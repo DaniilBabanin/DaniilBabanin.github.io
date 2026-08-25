@@ -2,8 +2,8 @@ export const translations = {
     en: {
         // index.html translations
         "title": "Daniil Babanin",
-        "meta_description": "Daniil Babanin - Software Developer",
-        "meta_keywords": "Daniil Babanin, Operations Director, System Architect, Software Developer, Programmer",
+        "meta_description": "Daniil Babanin - Application Manager (Investment & Corporate Banking), Operations Director, System Architect, Software Developer",
+        "meta_keywords": "Daniil Babanin, Application Manager, Investment Banking, Operations Director, System Architect, Software Developer, Programmer",
         "meta_author": "Daniil Babanin",
         "name": "Daniil Babanin",
         "skills_summary": "View a summary of my skills",
@@ -15,7 +15,17 @@ export const translations = {
         "cv_password": "for the password.",
         "skills_title": "Professional Skills",
         "cv_summary": "CV Summary",
-        "cv_summary_text": "As a seasoned software developer and leader with over 10 years in IT, I specialize in full-stack development, system architecture, and operational management. Below is an overview of my key skills and expertise, honed through diverse projects in dynamic environments.",
+        "cv_summary_text": "As a seasoned software developer and leader with over 10 years in IT — currently Application Manager in investment and corporate banking at ODDO BHF SE — I specialize in financial applications, system architecture, and operational management. Below is an overview of my key skills and expertise, honed through diverse projects in dynamic environments.",
+        // Current Role content
+        "current_role": "Current Role",
+        "current_role_heading": "Application Manager — Investment & Corporate Banking (ODDO BHF SE):",
+        "current_role_li1": "Application management and third-level production support for business-critical financial applications: booking, regulatory and management reporting.",
+        "current_role_li2": "Regulatory reporting for German supervisory authorities and the European Central Bank — reconciliation, data lineage, auditability.",
+        "current_role_li3": "Reverse engineering of vendor software (Finastra): rebuilt an internal, reproducible build process for customizations.",
+        "current_role_li4": "End-to-end transaction observability with Grafana, Loki and OpenTelemetry across OpenShift and Kafka-based platforms.",
+        "current_role_li5": "Data-integration modernization with Apache Hop, SQL Server, Control-M and OpenShift.",
+        "current_role_li6": "Internal AI tooling under banking security guardrails: coding assistants, document conversion, OCR, local knowledge search.",
+        "current_role_li7": "C4 architecture documentation, runbooks and procedural documentation; training colleagues on Git, AI-assisted engineering and Kanban.",
         // Skills section headings
         "technical_expertise": "Technical Expertise",
         "cloud_devops": "Cloud & DevOps",
@@ -29,7 +39,7 @@ export const translations = {
         "change_management": "Change Management",
         // Technical Expertise content
         "full_stack_dev": "Full-Stack Development & Architecture:",
-        "full_stack_dev_li1": "Proficient in languages: JavaScript, TypeScript, Solidity, HTML/CSS, SQL (MySQL).",
+        "full_stack_dev_li1": "Proficient in languages: JavaScript, TypeScript, Java, SQL (SQL Server, MySQL), PowerShell, Solidity, HTML/CSS.",
         "full_stack_dev_li2": "Frameworks: Node.js, React, Svelte for building scalable frontend and backend systems.",
         "full_stack_dev_li3": "App Development: Cross-platform apps (Android/iOS), Progressive Web Apps (PWAs).",
         "full_stack_dev_li4": "Software Architecture: End-to-end design of high-performance, secure systems.",
@@ -38,7 +48,7 @@ export const translations = {
         "cloud_devops_heading": "Cloud & DevOps:",
         "cloud_devops_li1": "Infrastructure: AWS (EC2, S3, Lambda), Cloudflare, Kubernetes cluster management.",
         "cloud_devops_li2": "CI/CD Pipelines: Automated build and deployment processes (e.g., Jenkins, GitLab CI).",
-        "cloud_devops_li3": "Containerization: Docker, microservices architectures.",
+        "cloud_devops_li3": "Containerization: Docker, OpenShift/Kubernetes, microservices architectures.",
         // Web3 & Innovation content
         "web3_innovation_heading": "Web3 & Innovation:",
         "web3_innovation_li1": "Smart contract development with Solidity.",
@@ -53,7 +63,7 @@ export const translations = {
         // Operational Excellence content
         "operational_excellence_heading": "Operational Excellence:",
         "operational_excellence_li1": "Reducing time-to-market through process optimization (Kanban/Scrum).",
-        "operational_excellence_li2": "Implementing monitoring tools (e.g., Prometheus/Grafana) for error prevention.",
+        "operational_excellence_li2": "Implementing monitoring and observability (Prometheus/Grafana, Loki, OpenTelemetry) for error prevention and transaction tracing.",
         "operational_excellence_li3": "Scaling IT infrastructures for business growth (from startup to scale-up).",
         // Business Impact content
         "business_impact_heading": "Business Impact:",
