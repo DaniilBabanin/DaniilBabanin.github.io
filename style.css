@@ -96,6 +96,13 @@ div{
 	font-size: 50px;
   text-shadow: 2px 2px 3px #000;
   margin-top: 0;
+  margin-bottom: 20px;
+}
+
+#initial-content #tagline{
+	font-family: "SourceCodePro-Light", sans-serif;
+	font-size: 20px;
+  margin-top: 0;
   margin-bottom: 50px;
 }
 
@@ -397,9 +404,14 @@ a[href^="mailto"] {
   
   #initial-content h1 {
     font-size: 40px;
-    margin-bottom: 100px;
+    margin-bottom: 15px;
   }
-  
+
+  #initial-content #tagline {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
   #skills-content h1 {
     font-size: 28px;
     margin-bottom: 15px;
@@ -478,7 +490,12 @@ a[href^="mailto"] {
   
   #initial-content h1 {
     font-size: 36px;
-    margin-bottom: 100px;
+    margin-bottom: 12px;
+  }
+
+  #initial-content #tagline {
+    font-size: 16px;
+    margin-bottom: 35px;
   }
   
   #skills-content h1 {

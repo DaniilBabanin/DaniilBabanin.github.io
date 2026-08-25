@@ -6,6 +6,7 @@ export const translations = {
         "meta_keywords": "Daniil Babanin, Application Manager, Investment Banking, Operations Director, System Architect, Software Developer, Programmer",
         "meta_author": "Daniil Babanin",
         "name": "Daniil Babanin",
+        "tagline": "I make complex financial applications easier to operate, understand, report on and improve.",
         "skills_summary": "View a summary of my skills",
         "skills_link": "here",
         "full_cv": "For my full CV, click",
@@ -84,7 +85,7 @@ export const translations = {
         "change_management_li1": "Team restructuring post-challenges, including hiring and staff reductions.",
         "change_management_li2": "Introducing remote work cultures with tools like GitLab, Mattermost, Jitsi.",
         // Footer content
-        "cv_summary_footer": "This summary highlights my core competencies while keeping details general for public viewing.",
+        "cv_summary_footer": "This page shows my core competencies. Project details and references are available on request.",
         "cv_contact": "For a full CV with specific experiences, please contact me at",
         "imprint_link": "Imprint",
         "particles_disable": "Disable Particles",
