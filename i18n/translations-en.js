@@ -93,7 +93,7 @@ export const translations = {
         // imprint.html translations
         "imprint_title": "Imprint - Daniil Babanin",
         "imprint_header": "Imprint",
-        "imprint_info_heading": "Information according to § 5 TMG:",
+        "imprint_info_heading": "Information according to § 5 DDG:",
         "imprint_address": "Steubenstr. 25",
         "imprint_city": "65189 Wiesbaden",
         "imprint_country": "Germany",
@@ -105,7 +105,7 @@ export const translations = {
         "imprint_vat_number": "No VAT Number",
         "imprint_disclaimer": "Disclaimer:",
         "imprint_liability_content": "Liability for Contents",
-        "imprint_liability_content_p1": "As service providers, we are liable for own contents of these websites according to Paragraph 7, Sect. 1 German Telemedia Act (TMG). However, according to Paragraphs 8 to 10 German Telemedia Act (TMG), service providers are not obligated to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities.",
+        "imprint_liability_content_p1": "As service providers, we are liable for own contents of these websites according to Section 7(1) of the German Digital Services Act (DDG). However, according to Sections 8 to 10 DDG, service providers are not obligated to permanently monitor submitted or stored information or to search for evidences that indicate illegal activities.",
         "imprint_liability_content_p2": "Legal obligations to removing information or blocking the use of information remain unaffected. However, liability is only possible from the date of knowledge of a specific infringement. Upon notification of such violations, we will remove the content immediately.",
         "imprint_liability_links": "Liability for Links",
         "imprint_liability_links_p1": "Our offer contains links to external third party websites. We have no influence on the content of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for their own contents.",
